@@ -1,0 +1,38 @@
+{
+  "name": "fc-website-vercel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@ai-sdk/anthropic": "^2.0.20",
+    "@types/three": "^0.180.0",
+    "ai": "^5.0.56",
+    "autoprefixer": "^10.4.20",
+    "framer-motion": "^11.3.31",
+    "next": "^14.2.13",
+    "postcss": "^8.4.41",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-globe.gl": "^2.26.4",
+    "tailwindcss": "^3.4.10",
+    "three": "^0.180.0",
+    "typescript": "^5.9.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.5.4"
+  }
+}
