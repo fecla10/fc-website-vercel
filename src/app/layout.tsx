@@ -46,6 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.className} min-h-screen bg-gray-950 text-gray-100`}>
+        <CursorLight />
         <Navigation />
         <main className="relative">
           {children}

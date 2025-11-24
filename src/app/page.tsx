@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ParticleDissolve from '@/components/ParticleDissolve'
 import dynamic from 'next/dynamic'
+import { RevenueGrowthChart, ProcessingTimeChart, CostSavingsChart } from '@/components/achievement-charts'
 
 const Interactive3DGlobe = dynamic(() => import('@/components/Interactive3DGlobe'), { 
   ssr: false,
@@ -114,7 +115,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="absolute -inset-4 rounded-3xl border border-cyan-400/30 animate-pulse"></div>
-                <div className="absolute -inset-8 rounded-3xl border border-purple-400/20 animate-spin" style={{ animationDuration: '20s' }}></div>
+                <div className="absolute -inset-8 rounded-3xl border border-blue-400/20 animate-spin" style={{ animationDuration: '20s' }}></div>
               </div>
             </motion.div>
 
@@ -133,12 +134,12 @@ export default function Home() {
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="startup-section">
+      <section className="startup-section pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -147,7 +148,67 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl font-bold mb-6 startup-accent">What I Bring</h2>
+            <h2 className="text-5xl font-bold mb-6 startup-accent leading-tight">What I Bring</h2>
+            
+            {/* Elegant Interactive Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-6 py-3 mb-8 rounded-full border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-blue-600/10 backdrop-blur-sm relative overflow-hidden group cursor-pointer"
+            >
+              {/* Animated background gradient */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(139, 92, 246, 0.2) 100%)',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+              />
+              
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                style={{
+                  background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+                }}
+              />
+
+              {/* Pulsing dot */}
+              <motion.div
+                className="w-2 h-2 bg-cyan-400 rounded-full relative z-10"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [1, 0.7, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut'
+                }}
+              />
+              
+              <span className="text-sm font-medium text-cyan-300 relative z-10">
+                Core Expertise
+              </span>
+              
+              {/* Glow effect on hover */}
+              <motion.div
+                className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  boxShadow: '0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(59, 130, 246, 0.3)',
+                }}
+              />
+            </motion.div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               International expertise meets cutting-edge technology. From professional athletics 
               to data science, I bring a unique perspective to every challenge.
@@ -155,60 +216,358 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-20">
+            {/* Data Analytics Card */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, rotateX: -15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotateY: 5,
+                transition: { duration: 0.3 }
+              }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              className="startup-card p-8 text-center"
+              className="startup-card p-8 text-center relative overflow-hidden group cursor-pointer"
+              style={{ perspective: '1000px' }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Animated background gradient */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%)',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+              />
+              
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                style={{
+                  background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+                }}
+              />
+
+              <motion.div
+                className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 relative z-10"
+                whileHover={{ 
+                  scale: 1.15,
+                  rotate: [0, -10, 10, -10, 0],
+                }}
+                transition={{ 
+                  scale: { duration: 0.3 },
+                  rotate: { duration: 0.5 }
+                }}
+              >
+                <motion.div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(37, 99, 235, 0.5))',
+                  }}
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                />
+                <motion.svg
+                  className="w-10 h-10 text-white relative z-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  animate={{
+                    y: [0, -5, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">Data Analytics</h3>
-              <p className="text-gray-300">
+                </motion.svg>
+              </motion.div>
+              
+              <motion.h3
+                className="text-xl font-bold text-white mb-4 relative z-10"
+                whileHover={{ scale: 1.05 }}
+              >
+                Data Analytics
+              </motion.h3>
+              <motion.p
+                className="text-gray-300 relative z-10"
+                initial={{ opacity: 0.8 }}
+                whileHover={{ opacity: 1 }}
+              >
                 Transform complex datasets into actionable business insights with advanced analytics and visualization.
-              </p>
+              </motion.p>
+
+              {/* Floating particles */}
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                  style={{
+                    left: `${20 + i * 15}%`,
+                    top: `${30 + (i % 3) * 20}%`,
+                  }}
+                  animate={{
+                    y: [0, -20, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                    ease: 'easeInOut'
+                  }}
+                />
+              ))}
             </motion.div>
 
+            {/* AI Automation Card */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, rotateX: -15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotateY: -5,
+                transition: { duration: 0.3 }
+              }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="startup-card p-8 text-center"
+              className="startup-card p-8 text-center relative overflow-hidden group cursor-pointer"
+              style={{ perspective: '1000px' }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Animated background gradient */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%)',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+              />
+              
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                style={{
+                  background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+                }}
+              />
+
+              <motion.div
+                className="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-6 relative z-10"
+                whileHover={{ 
+                  scale: 1.15,
+                  rotate: [0, 10, -10, 10, 0],
+                }}
+                transition={{ 
+                  scale: { duration: 0.3 },
+                  rotate: { duration: 0.5 }
+                }}
+              >
+                <motion.div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.5))',
+                  }}
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                />
+                <motion.svg
+                  className="w-10 h-10 text-white relative z-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  animate={{
+                    rotate: [0, 360],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: 'linear'
+                  }}
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">AI Automation</h3>
-              <p className="text-gray-300">
+                </motion.svg>
+              </motion.div>
+              
+              <motion.h3
+                className="text-xl font-bold text-white mb-4 relative z-10"
+                whileHover={{ scale: 1.05 }}
+              >
+                AI Automation
+              </motion.h3>
+              <motion.p
+                className="text-gray-300 relative z-10"
+                initial={{ opacity: 0.8 }}
+                whileHover={{ opacity: 1 }}
+              >
                 Streamline operations with intelligent automation solutions that scale with your business growth.
-              </p>
+              </motion.p>
+
+              {/* Pulsing rings */}
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute inset-0 border-2 border-blue-400 rounded-lg"
+                  style={{
+                    borderColor: `rgba(59, 130, 246, ${0.3 - i * 0.1})`,
+                  }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0, 0.3],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: i * 0.4,
+                    ease: 'easeInOut'
+                  }}
+                />
+              ))}
             </motion.div>
 
+            {/* Global Markets Card */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, rotateX: -15 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotateY: 5,
+                transition: { duration: 0.3 }
+              }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="startup-card p-8 text-center"
+              className="startup-card p-8 text-center relative overflow-hidden group cursor-pointer"
+              style={{ perspective: '1000px' }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Animated background gradient */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+              />
+              
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                style={{
+                  background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+                }}
+              />
+
+              <motion.div
+                className="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-6 relative z-10"
+                whileHover={{ 
+                  scale: 1.15,
+                  rotate: [0, -10, 10, -10, 0],
+                }}
+                transition={{ 
+                  scale: { duration: 0.3 },
+                  rotate: { duration: 0.5 }
+                }}
+              >
+                <motion.div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(59, 130, 246, 0.5))',
+                  }}
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                />
+                <motion.svg
+                  className="w-10 h-10 text-white relative z-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">Global Markets</h3>
-              <p className="text-gray-300">
+                </motion.svg>
+              </motion.div>
+              
+              <motion.h3
+                className="text-xl font-bold text-white mb-4 relative z-10"
+                whileHover={{ scale: 1.05 }}
+              >
+                Global Markets
+              </motion.h3>
+              <motion.p
+                className="text-gray-300 relative z-10"
+                initial={{ opacity: 0.8 }}
+                whileHover={{ opacity: 1 }}
+              >
                 International experience across US, Europe, and Latin America brings unique market perspectives.
-              </p>
+              </motion.p>
+
             </motion.div>
           </div>
+
+          {/* Achievement Charts Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4 startup-accent">Measurable Impact</h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <RevenueGrowthChart />
+              <ProcessingTimeChart />
+              <CostSavingsChart />
+            </div>
+          </motion.div>
 
           {/* Contact Information */}
           <motion.div
