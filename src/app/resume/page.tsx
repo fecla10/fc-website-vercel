@@ -75,10 +75,8 @@ export default function Resume() {
               <div className="glass-card p-6">
                 <h3 className="text-xl font-bold mb-4 neon-text">Professional Summary</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  Strategic data consultant and project manager specializing in AI-powered analytics, 
-                  data warehousing, and business intelligence. Expert in automating complex data operations, 
-                  reducing processing times by up to 97%, and delivering actionable insights for international 
-                  businesses across multiple markets.
+                  Data-driven project manager and analyst specializing in AI-powered analytics,
+                  international operations, and strategic business development across global markets.
                 </p>
               </div>
 
@@ -87,23 +85,15 @@ export default function Resume() {
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Achieved 98% on-time delivery managing cross-functional teams for luxury furniture projects averaging $70K</span>
+                    <span>Negotiated 26% cost savings in international manufacturing partnerships</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Reduced data processing time by 97% (1 hour to 2 minutes) through automated ETL processes and Power BI solutions</span>
+                    <span>Automated market analysis processes, reducing processing time by 97%</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-pink-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Negotiated 26% cost savings with premium manufacturers while maintaining luxury service standards</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Drove $1M+ revenue growth and secured 20+ distributor partnerships across 7 international markets</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Improved reporting accuracy by 85% through unified data warehouse consolidation</span>
+                    <span>Drove $1M+ revenue growth through strategic market expansion</span>
                   </li>
                 </ul>
               </div>
@@ -112,11 +102,8 @@ export default function Resume() {
                 <h3 className="text-xl font-bold mb-4 neon-text">Core Competencies</h3>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    'Data Analytics', 'AI/ML', 'Python', 'Power BI', 'Databricks', 'Project Management', 
-                    'Web Scraping', 'ETL Processes', 'Data Warehousing', 'SAP', 'ERP', 'Financial Modeling',
-                    'ROI Analysis', 'International Trade', 'Supply Chain', 'Business Intelligence',
-                    'Cursor', 'Claude', 'Next.js', 'Vercel', 'Supabase', 'Prompt Engineering',
-                    'Agentic Frameworks', 'RAG', 'VectorDBs', 'LLMs'
+                    'Data Analytics', 'AI/ML', 'Project Management', 'International Trade',
+                    'Supply Chain', 'Business Intelligence', 'Web Scraping', 'Cloud Computing'
                   ].map((skill) => (
                     <span
                       key={skill}

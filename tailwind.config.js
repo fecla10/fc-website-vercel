@@ -10,6 +10,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // NorCal Minimalist Palette
+        norcal: {
+          dark: '#1a1a18',      // Warm charcoal/black (Redwood shadow)
+          sand: '#e3e0d7',      // Bone/Unbleached paper
+          sage: '#8a9a8a',      // Dried eucalyptus
+          clay: '#c47f62',      // Terracotta/Desert (Accent)
+          mist: '#4a504d',      // Fog grey
+          stone: '#2b2b26',     // Wet stone (Card backgrounds)
+        },
         primary: {
           50: '#eff6ff',
           100: '#dbeafe',
@@ -72,7 +81,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        mono: ['"Space Mono"', 'JetBrains Mono', 'monospace'],
       },
     },
   },

@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Mono } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceMono = Space_Mono({ 
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Felipe Clavijo - Data Operations Strategist',
@@ -45,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-screen bg-gray-950 text-gray-100`}>
+      <body className={`${spaceMono.className} min-h-screen bg-norcal-dark text-norcal-sand selection:bg-norcal-clay selection:text-white`}>
         <Navigation />
         <main className="relative">
           {children}

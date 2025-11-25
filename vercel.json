@@ -1,8 +1,11 @@
 {
   "functions": {
-    "src/app/api/chat/route.ts": {
+    "src/app/dashboard/page.tsx": {
       "maxDuration": 30
     }
+  },
+  "env": {
+    "ANTHROPIC_API_KEY": "@anthropic-api-key"
   },
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",

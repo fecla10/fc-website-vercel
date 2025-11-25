@@ -62,26 +62,21 @@ export default function ChatInterface() {
 
       const data = await response.json()
 
-      if (data.error && !data.text) {
-        throw new Error(data.error)
-      }
-
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.text || data.error || 'I apologize, but I encountered an error. Please try again.',
+        content: data.text,
         timestamp: new Date()
       }
 
       setMessages(prev => [...prev, assistantMessage])
     } catch (error) {
       console.error('Error generating response:', error)
+      console.error('Error details:', JSON.stringify(error, null, 2))
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: error instanceof Error && error.message.includes('API key')
-          ? "I'm sorry, but I'm having trouble connecting right now. It looks like there might be an authentication issue. Please let Felipe know about this."
-          : `I'm sorry, I encountered an error while processing your question: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again.`,
+        content: `I'm sorry, I encountered an error while processing your question. Error: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again.`,
         timestamp: new Date()
       }
       setMessages(prev => [...prev, errorMessage])
@@ -93,7 +88,7 @@ export default function ChatInterface() {
   return (
     <div className="glass-card rounded-lg overflow-hidden">
       {/* Chat Header */}
-      <div className="p-4 border-b border-white/10 bg-gradient-to-r from-cyan-500/10 to-blue-600/10">
+      <div className="p-4 border-b border-white/10 bg-gradient-to-r from-cyan-500/10 to-purple-600/10">
         <div className="flex items-center space-x-3">
           <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
           <h3 className="text-lg font-semibold text-white">Francesca, Felipe&apos;s Assistant</h3>
@@ -115,7 +110,7 @@ export default function ChatInterface() {
               <div
                 className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
                   message.role === 'user'
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
                     : 'glass-card text-gray-300'
                 }`}
               >
@@ -139,8 +134,8 @@ export default function ChatInterface() {
               <div className="flex items-center space-x-2">
                 <div className="flex space-x-1">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
                 <span className="text-sm text-gray-400">Thinking...</span>
               </div>

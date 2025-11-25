@@ -3,106 +3,117 @@
 import { useRef, useState, useEffect } from 'react'
 import Globe, { GlobeMethods } from 'react-globe.gl'
 
-// Locations with accurate lat/lng, flags, and details based on resume
+// Locations with accurate lat/lng, flags, and details
 const experiences = [
   {
     city: 'Santiago',
     country: 'Chile',
     flag: '🇨🇱',
-    role: 'Project Manager',
-    period: 'Nov 2024 - Current',
+    role: 'Home',
+    period: 'Origin',
     lat: -33.4489,
     lng: -70.6693,
+    color: '#00D4FF',
+    description: 'Home base where I developed foundational skills and soccer expertise that led to international opportunities.'
+  },
+  {
+    city: 'Santiago',
+    country: 'Chile',
+    flag: '🇨🇱',
+    role: 'Project Manager',
+    period: '2018-2019',
+    lat: -33.4489,
+    lng: -70.6693 + 0.5, // Slight offset
     color: '#7B68EE',
-    description: 'Managed cross-functional team of 6 specialists delivering luxury furniture to clients in Chile and Peru, achieving 98% on-time delivery and negotiating 26% cost savings.'
+    description: 'Project Manager role managing cross-functional teams and developing project management expertise in Chilean business environment.'
   },
   {
     city: 'New York',
     country: 'United States',
     flag: '🇺🇸',
     role: 'University',
-    period: '2016-2020',
+    period: '2019-2023',
     lat: 40.7128,
     lng: -74.0060,
     color: '#32CD32',
-    description: 'Earned B.S. in Business Administration with full scholarship as a D1 student-athlete, transitioning from professional soccer to business excellence.'
+    description: 'University studies - B.S. in Business Administration earned with full athletic scholarship, transitioning from professional soccer to business excellence.'
   },
   {
-    city: 'West Palm Beach',
+    city: 'Miami',
     country: 'United States',
     flag: '🇺🇸',
     role: 'Healthcare Internship',
-    period: 'Apr 2018 - Jan 2020',
-    lat: 26.7153,
-    lng: -80.0534,
+    period: '2022',
+    lat: 25.7617,
+    lng: -80.1918,
     color: '#FFB347',
-    description: 'Improved reporting by implementing robust data entry and analysis using Salesforce and Excel to support marketing and sales teams.'
+    description: 'Healthcare Internship focusing on data processing, operational optimization, and healthcare industry insights.'
   },
   {
     city: 'Chicago',
     country: 'United States',
     flag: '🇺🇸',
-    role: 'Import-Export Coordinator',
-    period: '2020-2021',
+    role: 'Logistics',
+    period: '2023',
     lat: 41.8781,
     lng: -87.6298,
     color: '#FF6B6B',
-    description: 'Managed 100% of air/ocean freight operations and automated 50% of data entry processes using Cargowise EDI capabilities for 500+ monthly shipments.'
+    description: 'Logistics role in major US commercial hub, developing expertise in complex distribution networks.'
   },
   {
     city: 'Sofia',
     country: 'Bulgaria',
     flag: '🇧🇬',
-    role: 'Data Analyst',
-    period: 'Jan 2021 - Dec 2021',
+    role: 'Logistics',
+    period: '2023-2024',
     lat: 42.6977,
     lng: 23.3219,
     color: '#DDA0DD',
-    description: 'Developed data-driven proposal analyzing 1,000+ delivery records that secured $250K in capital investment and automated Power BI reports reducing manual time by 60%.'
+    description: 'Logistics operations managing Eastern European supply chains and cross-border business processes.'
   },
   {
     city: 'Sofia',
     country: 'Bulgaria',
     flag: '🇧🇬',
     role: 'Project Manager',
-    period: 'Jan 2022 - Apr 2024',
+    period: '2024',
     lat: 42.6977,
-    lng: 23.3219 + 0.3, // Slight offset
+    lng: 23.3219 + 0.5, // Slight offset
     color: '#FF69B4',
-    description: 'Directed Chilean wine portfolio operations, generated $1M+ revenue, secured 20+ distributor partnerships, and negotiated 28% price reductions boosting profit margins for $4M portfolio.'
-  },
-  {
-    city: 'Osnabrück',
-    country: 'Germany',
-    flag: '🇩🇪',
-    role: 'Logistics Analysis',
-    period: '2021',
-    lat: 52.2799,
-    lng: 8.0472,
-    color: '#FFD700',
-    description: 'Analyzed transportation data during 4-month secondment identifying key patterns in UK-EU trade flows with 80% accuracy for post-Brexit scenarios.'
+    description: 'Project Manager role overseeing strategic initiatives in Bulgarian operations and international business.'
   },
   {
     city: 'Los Angeles',
     country: 'United States',
     flag: '🇺🇸',
     role: 'Data & Business Analyst',
-    period: 'Mar 2024 - Oct 2024',
+    period: '2024',
     lat: 34.0522,
     lng: -118.2437,
     color: '#40E0D0',
-    description: 'Automated market analysis reducing processing time by 96% and architected Power BI solutions for 2TB+ of data, consolidating 15+ KPIs from 10 markets into centralized dashboards.'
+    description: 'Data & Business Analyst role developing advanced analytics, business intelligence, and data science capabilities.'
   },
   {
     city: 'Los Angeles',
     country: 'United States',
     flag: '🇺🇸',
     role: 'Data Consulting',
-    period: 'Jun 2025 - Current',
+    period: 'Current',
     lat: 34.0522,
-    lng: -118.2437 + 0.3, // Slight offset
+    lng: -118.2437 + 0.5, // Slight offset
     color: '#00D4FF',
-    description: 'Currently managing comprehensive data operations for startups, utilizing web scraping and AI tools like Cursor and Claude to design cloud-based data warehousing solutions.'
+    description: 'Data Consulting - Current position providing AI-powered data consulting, automation solutions, and strategic analytics to small businesses using cutting-edge tools.'
+  },
+  {
+    city: 'Osnabrück',
+    country: 'Germany',
+    flag: '🇩🇪',
+    role: 'Logistics',
+    period: '2024',
+    lat: 52.2799,
+    lng: 8.0472,
+    color: '#FFD700',
+    description: 'Logistics role in Germany, focusing on efficient supply chain management and international trade processes.'
   }
 ]
 
@@ -111,8 +122,6 @@ type Experience = typeof experiences[0]
 export default function Interactive3DGlobe() {
   const globeEl = useRef<GlobeMethods>()
   const [selectedExp, setSelectedExp] = useState<Experience | null>(null)
-  const [hoveredExp, setHoveredExp] = useState<Experience | null>(null)
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
@@ -128,29 +137,20 @@ export default function Interactive3DGlobe() {
     return () => window.removeEventListener('resize', updateDimensions)
   }, [])
 
-  // Auto-rotate globe
+  // Auto-rotate globe and disable zoom
   useEffect(() => {
     if (globeEl.current) {
       globeEl.current.controls().autoRotate = true
       globeEl.current.controls().autoRotateSpeed = 2.5
+      // Disable zoom
+      globeEl.current.controls().enableZoom = false
     }
   }, [])
 
   // Handle click with zoom and show details
   const handleGlobeClick = (d: any) => {
-    if (!d) return
-    
-    // Find the matching experience from our array by comparing lat/lng
-    // Handle both direct data and nested data structures
-    const clickedLat = d.lat ?? d.lat
-    const clickedLng = d.lng ?? d.lng
-    
-    const exp = experiences.find(e => 
-      Math.abs(e.lat - clickedLat) < 0.1 && 
-      Math.abs(e.lng - clickedLng) < 0.1
-    )
-    
-    if (exp) {
+    if (d) {
+      const exp = d as Experience
       setSelectedExp(exp)
       
       // Stop auto-rotation when clicking
@@ -174,16 +174,9 @@ export default function Interactive3DGlobe() {
     }
   }
 
-  // Custom HTML marker with hover tooltip and click handler
+  // Custom HTML marker
   const getMarker = (d: any) => {
-    // Find the matching experience from our array
-    const exp = experiences.find(e => 
-      Math.abs(e.lat - d.lat) < 0.1 && 
-      Math.abs(e.lng - d.lng) < 0.1
-    ) || d as Experience
-    
-    if (!exp) return document.createElement('div')
-    
+    const exp = d as Experience
     const marker = document.createElement('div')
     marker.className = 'marker'
     marker.style.cursor = 'pointer'
@@ -192,45 +185,12 @@ export default function Interactive3DGlobe() {
         ${exp.flag}
       </div>
     `
-    
-    marker.addEventListener('click', (e) => {
-      e.stopPropagation()
-      setSelectedExp(exp)
-      
-      // Stop auto-rotation when clicking
-      if (globeEl.current) {
-        globeEl.current.controls().autoRotate = false
-        
-        // Zoom to the clicked location
-        globeEl.current.pointOfView({
-          lat: exp.lat,
-          lng: exp.lng,
-          altitude: 1.5
-        }, 1000) // 1 second animation
-      }
-    })
-    
-    marker.addEventListener('mouseover', (e: MouseEvent) => {
+    marker.addEventListener('mouseover', () => {
       marker.style.transform = 'scale(1.2)'
-      setHoveredExp(exp)
-      setTooltipPosition({
-        x: e.clientX,
-        y: e.clientY
-      })
     })
-    
-    marker.addEventListener('mousemove', (e: MouseEvent) => {
-      setTooltipPosition({
-        x: e.clientX,
-        y: e.clientY
-      })
-    })
-    
     marker.addEventListener('mouseout', () => {
       marker.style.transform = 'scale(1)'
-      setHoveredExp(null)
     })
-    
     return marker
   }
 
@@ -248,38 +208,19 @@ export default function Interactive3DGlobe() {
         htmlTransitionDuration={300}
       />
 
-      {/* Hover Tooltip */}
-      {hoveredExp && !selectedExp && (
-        <div 
-          className="fixed bg-black/90 backdrop-blur-sm p-3 rounded-lg shadow-xl max-w-xs z-50 pointer-events-none border border-cyan-500/30"
-          style={{
-            left: `${tooltipPosition.x + 15}px`,
-            top: `${tooltipPosition.y - 15}px`,
-            transform: 'translateY(-100%)',
-            maxWidth: '280px'
-          }}
-        >
-          <p className="text-gray-300 text-sm leading-relaxed">{hoveredExp.description}</p>
-        </div>
-      )}
-
       {selectedExp && (
         <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm p-4 rounded-lg shadow-xl max-w-sm z-40">
           <div className="flex justify-between items-start mb-3">
-            <h3 className="font-bold text-white text-lg">
-              {selectedExp.flag} {selectedExp.city}, {selectedExp.country}
-            </h3>
+            <h3 className="font-bold text-white text-lg">{selectedExp.flag} {selectedExp.city}, {selectedExp.country}</h3>
             <button 
-              onClick={(e) => {
-                e.stopPropagation()
+              onClick={() => {
                 setSelectedExp(null)
                 // Restart rotation when closing
                 if (globeEl.current) {
                   globeEl.current.controls().autoRotate = true
                 }
               }} 
-              className="text-gray-300 hover:text-white text-xl leading-none w-6 h-6 flex items-center justify-center"
-              aria-label="Close"
+              className="text-gray-300 hover:text-white text-xl leading-none"
             >
               ×
             </button>
@@ -287,9 +228,7 @@ export default function Interactive3DGlobe() {
           <p className="text-sm font-medium mb-2" style={{color: selectedExp.color}}>
             {selectedExp.role} ({selectedExp.period})
           </p>
-          <p className="text-gray-300 text-sm leading-relaxed">
-            {selectedExp.description}
-          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">{selectedExp.description}</p>
         </div>
       )}
 
