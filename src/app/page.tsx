@@ -170,37 +170,16 @@ export default function Home() {
       {/* Divider */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-norcal-stone to-transparent my-12 opacity-50 relative z-10"></div>
 
-      {/* Features Section with ASCII Art on sides */}
+      {/* Features Section */}
       <section className="startup-section relative z-10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-center gap-8">
-            {/* Left - Tree ASCII */}
-            <div className="flex-shrink-0 opacity-60 hover:opacity-90 transition-opacity duration-500">
-              <pre className="font-mono text-[6px] sm:text-[8px] lg:text-[10px] leading-[8px] sm:leading-[10px] lg:leading-[12px] text-norcal-sage whitespace-pre">
-{`      &&& &&  & &&
-  && &\\/&\\|& ()|/ @, &&
-  &\\/(/&/&||/& /_/)_&/_&
-&() &\\/&|()|/&\\/ '%" & ()
-&_\\_&&_\\ |& |&&/&__%_/_& &&
-&&   && & &| &| /& & % ()& /&&
- ()&_---()&\\&\\|&&-&&--%---()~
-     &&     \\|||
-             |||
-             |||
-       _____[___]_____
-       \\             /
-        \\___________/`}
-              </pre>
-            </div>
-
-            {/* Center - Expertise Container */}
-            <div className="max-w-2xl w-full">
+        <div className="max-w-3xl mx-auto px-6">
+          {/* Expertise Container */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-24 bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-8 border border-norcal-stone/30"
+            className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-6 sm:p-8 border border-norcal-stone/30"
           >
             <div className="mb-8 ml-1 border-l-2 border-norcal-clay/50 pl-3">
               <h2 className="text-xs tracking-[0.2em] text-norcal-sage uppercase mb-1">Expertise</h2>
@@ -248,14 +227,27 @@ export default function Home() {
               </div>
             </div>
           </motion.div>
-            </div>
 
+          {/* Tree ASCII - between containers */}
+          <div className="flex justify-center py-12 opacity-60 hover:opacity-90 transition-opacity duration-500">
+            <pre className="font-mono text-[6px] sm:text-[8px] lg:text-[10px] leading-[8px] sm:leading-[10px] lg:leading-[12px] text-norcal-sage whitespace-pre">
+{`      &&& &&  & &&
+  && &\\/&\\|& ()|/ @, &&
+  &\\/(/&/&||/& /_/)_&/_&
+&() &\\/&|()|/&\\/ '%" & ()
+&_\\_&&_\\ |& |&&/&__%_/_& &&
+&&   && & &| &| /& & % ()& /&&
+ ()&_---()&\\&\\|&&-&&--%---()~
+     &&     \\|||
+             |||
+             |||
+       _____[___]_____
+       \\             /
+        \\___________/`}
+            </pre>
           </div>
 
-        </div>
-
-        {/* Contact Section */}
-        <div className="max-w-3xl mx-auto px-6 mt-16">
+          {/* Contact Section */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
