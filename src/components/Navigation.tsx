@@ -14,7 +14,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 p-6 md:p-12 flex justify-between items-start mix-blend-screen">
+    <nav className="fixed top-0 left-0 right-0 z-50 p-4 sm:p-6 md:p-12 flex justify-between items-start mix-blend-screen">
       {/* Logo */}
       <div className="flex items-start gap-3">
         <Link href="/" className="text-base font-bold tracking-widest text-norcal-sand uppercase opacity-80 hover:opacity-100 transition-opacity duration-300">

@@ -53,13 +53,13 @@
   }
 
   .startup-title {
-    @apply text-6xl md:text-7xl lg:text-8xl font-light leading-none tracking-tighter;
+    @apply text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-none tracking-tighter;
     color: #e3e0d7;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
 
   .startup-subtitle {
-    @apply text-base md:text-lg font-normal text-norcal-sage leading-relaxed;
+    @apply text-sm sm:text-base md:text-lg font-normal text-norcal-sage leading-relaxed;
     opacity: 0.9;
   }
 
@@ -127,7 +127,7 @@
   }
 
   .startup-cta {
-    @apply px-10 py-5 rounded-xl font-bold text-sm uppercase tracking-widest;
+    @apply px-6 py-4 sm:px-10 sm:py-5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-widest;
     background: transparent;
     border: 1px solid #2b2b26;
     color: #e3e0d7;

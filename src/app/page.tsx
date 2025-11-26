@@ -37,7 +37,7 @@ export default function Home() {
             className="text-center mb-12"
           >
             <motion.div 
-              className="inline-flex items-center px-6 py-3 rounded-full startup-card border border-norcal-clay/30 mb-8 cursor-default"
+              className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full startup-card border border-norcal-clay/30 mb-8 cursor-default"
               animate={{ 
                 scale: [1, 1.02, 1],
                 y: [0, -4, 0],
@@ -54,7 +54,7 @@ export default function Home() {
               }}
             >
               <motion.span 
-                className="w-2 h-2 bg-norcal-clay rounded-full mr-3"
+                className="w-2 h-2 bg-norcal-clay rounded-full mr-2 sm:mr-3"
                 animate={{ 
                   scale: [1, 1.3, 1],
                   opacity: [0.7, 1, 0.7]
@@ -65,7 +65,7 @@ export default function Home() {
                   ease: "easeInOut"
                 }}
               />
-              <span className="text-xs text-norcal-sage font-mono uppercase tracking-widest">Available for new opportunities</span>
+              <span className="text-[10px] sm:text-xs text-norcal-sage font-mono uppercase tracking-wider sm:tracking-widest">Available for new opportunities</span>
             </motion.div>
           </motion.div>
 
@@ -100,9 +100,9 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <Link href="/dashboard" className="startup-cta inline-flex items-center group">
+              <Link href="/dashboard" className="startup-cta inline-flex items-center group w-full sm:w-auto justify-center">
                 <span className="relative z-10">Talk with Francesca</span>
-                <svg className="ml-3 w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="ml-3 w-4 h-4 sm:w-5 sm:h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </Link>
@@ -110,9 +110,9 @@ export default function Home() {
               <a 
                 href="/Felipe_Clavijo_Resume.pdf" 
                 download 
-                className="px-10 py-5 rounded-xl font-bold text-sm uppercase tracking-widest text-norcal-sage border border-norcal-stone hover:border-norcal-clay hover:text-norcal-clay transition-all duration-500 inline-flex items-center group"
+                className="px-6 py-4 sm:px-10 sm:py-5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-widest text-norcal-sage border border-norcal-stone hover:border-norcal-clay hover:text-norcal-clay transition-all duration-500 inline-flex items-center group w-full sm:w-auto justify-center"
               >
-                <svg className="mr-3 w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 Download Resume
@@ -121,7 +121,7 @@ export default function Home() {
           </div>
 
           {/* Profile & Globe Grid */}
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
             {/* Left Column - Profile */}
             <motion.div 
               className="flex justify-center"
@@ -132,7 +132,7 @@ export default function Home() {
               <div className="relative">
                 <div 
                   id="hero-profile-image"
-                  className="w-96 h-96 rounded-xl overflow-hidden startup-card border border-norcal-clay/30 shadow-2xl"
+                  className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-xl overflow-hidden startup-card border border-norcal-clay/30 shadow-2xl"
                 >
                   <Image
                     src="/felipe-profile.jpg"
@@ -144,7 +144,7 @@ export default function Home() {
                     style={{ objectPosition: 'center 22%' }}
                   />
                 </div>
-                <div className="absolute -inset-4 rounded-xl border border-norcal-clay/20 animate-pulse"></div>
+                <div className="absolute -inset-3 sm:-inset-4 rounded-xl border border-norcal-clay/20 animate-pulse"></div>
               </div>
             </motion.div>
 
@@ -270,12 +270,12 @@ export default function Home() {
                   Always open to discussions on data, technology, and the intersection of business strategy.
                 </p>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <a 
                   href="https://www.linkedin.com/in/felipe-clavijoc/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="p-3 border border-norcal-stone text-norcal-sand hover:bg-norcal-sand hover:text-norcal-dark transition-all duration-500"
+                  className="p-3 border border-norcal-stone text-norcal-sand hover:bg-norcal-sand hover:text-norcal-dark transition-all duration-500 flex items-center justify-center"
                   aria-label="LinkedIn"
                 >
                   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
@@ -284,12 +284,12 @@ export default function Home() {
                 </a>
                 <a 
                   href="mailto:feclavijo@gmail.com" 
-                  className="px-6 py-3 border border-norcal-stone text-norcal-sand text-xs uppercase tracking-widest hover:bg-norcal-sand hover:text-norcal-dark transition-all duration-500 flex items-center gap-3"
+                  className="px-4 py-3 sm:px-6 border border-norcal-stone text-norcal-sand text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest hover:bg-norcal-sand hover:text-norcal-dark transition-all duration-500 flex items-center justify-center gap-2 sm:gap-3"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                   </svg>
-                  Initialize Contact
+                  Contact
                 </a>
               </div>
             </div>
