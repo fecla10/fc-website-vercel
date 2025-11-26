@@ -175,8 +175,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-center gap-8">
             {/* Left - Tree ASCII */}
-            <div className="hidden lg:block flex-shrink-0 opacity-60 hover:opacity-90 transition-opacity duration-500">
-              <pre className="font-mono text-[10px] leading-[12px] text-norcal-sage whitespace-pre">
+            <div className="flex-shrink-0 opacity-60 hover:opacity-90 transition-opacity duration-500">
+              <pre className="font-mono text-[6px] sm:text-[8px] lg:text-[10px] leading-[8px] sm:leading-[10px] lg:leading-[12px] text-norcal-sage whitespace-pre">
 {`      &&& &&  & &&
   && &\\/&\\|& ()|/ @, &&
   &\\/(/&/&||/& /_/)_&/_&
