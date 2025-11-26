@@ -1,11 +1,12 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import ParticleDissolve from '@/components/ParticleDissolve'
 import AsciiWave from '@/components/AsciiWave'
+import MatrixText from '@/components/MatrixText'
 import dynamic from 'next/dynamic'
 
 const Interactive3DGlobe = dynamic(() => import('@/components/Interactive3DGlobe'), { 
@@ -19,6 +20,70 @@ const Interactive3DGlobe = dynamic(() => import('@/components/Interactive3DGlobe
     </div>
   )
 })
+
+// Expertise Container with Matrix Effect
+function ExpertiseContainer() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isTriggered, setIsTriggered] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isTriggered) {
+          setIsTriggered(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [isTriggered])
+
+  const expertiseData = [
+    { title: 'Analytics', items: ['Business Intelligence', 'Data Visualization', 'Statistical Modeling', 'Predictive Analytics'] },
+    { title: 'Technology', items: ['AI Automation', 'Python & SQL', 'Cloud Infrastructure', 'API Integration'] },
+    { title: 'Markets', items: ['United States', 'Europe', 'Latin America', 'Global Expansion'] },
+    { title: 'Background', items: ['Professional Athlete', 'Data Science', 'Strategic Consulting', 'International Business'] },
+  ]
+
+  return (
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-6 sm:p-8 border border-norcal-stone/30"
+    >
+      <div className="mb-8 ml-1 border-l-2 border-norcal-clay/50 pl-3">
+        <h2 className="text-xs tracking-[0.2em] text-norcal-sage uppercase mb-1">
+          <MatrixText text="Expertise" trigger={isTriggered} delay={0} speed={60} />
+        </h2>
+      </div>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12 pl-4">
+        {expertiseData.map((category, catIndex) => (
+          <div key={category.title}>
+            <h4 className="text-norcal-sand text-xs font-bold uppercase tracking-widest mb-4 opacity-70">
+              <MatrixText text={category.title} trigger={isTriggered} delay={200 + catIndex * 300} speed={50} />
+            </h4>
+            <ul className="space-y-2">
+              {category.items.map((item, itemIndex) => (
+                <li key={item} className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">
+                  <MatrixText text={item} trigger={isTriggered} delay={400 + catIndex * 300 + itemIndex * 100} speed={25} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  )
+}
 
 export default function Home() {
   return (
@@ -173,60 +238,8 @@ export default function Home() {
       {/* Features Section */}
       <section className="startup-section relative z-10">
         <div className="max-w-3xl mx-auto px-6">
-          {/* Expertise Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-6 sm:p-8 border border-norcal-stone/30"
-          >
-            <div className="mb-8 ml-1 border-l-2 border-norcal-clay/50 pl-3">
-              <h2 className="text-xs tracking-[0.2em] text-norcal-sage uppercase mb-1">Expertise</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12 pl-4">
-              <div>
-                <h4 className="text-norcal-sand text-xs font-bold uppercase tracking-widest mb-4 opacity-70">Analytics</h4>
-                <ul className="space-y-2">
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Business Intelligence</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Data Visualization</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Statistical Modeling</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Predictive Analytics</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-norcal-sand text-xs font-bold uppercase tracking-widest mb-4 opacity-70">Technology</h4>
-                <ul className="space-y-2">
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">AI Automation</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Python & SQL</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Cloud Infrastructure</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">API Integration</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-norcal-sand text-xs font-bold uppercase tracking-widest mb-4 opacity-70">Markets</h4>
-                <ul className="space-y-2">
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">United States</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Europe</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Latin America</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Global Expansion</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-norcal-sand text-xs font-bold uppercase tracking-widest mb-4 opacity-70">Background</h4>
-                <ul className="space-y-2">
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Professional Athlete</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Data Science</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">Strategic Consulting</li>
-                  <li className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors duration-300 cursor-default">International Business</li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
+          {/* Expertise Container with Matrix Effect */}
+          <ExpertiseContainer />
 
           {/* Tree ASCII - between containers */}
           <div className="flex justify-center py-12 opacity-60 hover:opacity-90 transition-opacity duration-500">
