@@ -51,16 +51,16 @@ export default function Navigation() {
 
       {/* Mobile Navigation Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
+        <div className="fixed inset-0 z-[100] md:hidden">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-norcal-dark/95 backdrop-blur-sm"
+            className="absolute inset-0 bg-norcal-dark"
             onClick={() => setIsOpen(false)}
           />
           
           {/* Mobile menu content */}
-          <div className="relative z-50 flex flex-col items-end p-6 pt-20">
-            <ul className="flex flex-col gap-6 text-right">
+          <div className="relative z-[101] flex flex-col h-full p-6 pt-20">
+            <ul className="flex flex-col gap-8">
               {navItems.map((item, index) => (
                 <li 
                   key={item.name}
@@ -70,10 +70,10 @@ export default function Navigation() {
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-2xl font-light tracking-widest uppercase transition-colors duration-300 ${
+                    className={`text-3xl font-light tracking-widest uppercase transition-colors duration-300 ${
                       pathname === item.href
                         ? 'text-norcal-clay'
-                        : 'text-norcal-sage hover:text-norcal-sand'
+                        : 'text-norcal-sand hover:text-norcal-clay'
                     }`}
                   >
                     {item.name}
@@ -83,11 +83,11 @@ export default function Navigation() {
             </ul>
             
             {/* Mobile footer info */}
-            <div className="mt-auto pt-12 text-right">
-              <p className="text-norcal-mist text-[10px] uppercase tracking-widest">Los Angeles, CA</p>
+            <div className="mt-auto pb-12">
+              <p className="text-norcal-mist text-[10px] uppercase tracking-widest mb-2">Los Angeles, CA</p>
               <a 
                 href="mailto:feclavijo@gmail.com" 
-                className="text-norcal-sage text-xs hover:text-norcal-clay transition-colors"
+                className="text-norcal-sage text-sm hover:text-norcal-clay transition-colors"
               >
                 feclavijo@gmail.com
               </a>

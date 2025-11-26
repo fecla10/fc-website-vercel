@@ -65,7 +65,7 @@ export default function Home() {
                   ease: "easeInOut"
                 }}
               />
-              <span className="text-[10px] sm:text-xs text-norcal-sage font-mono uppercase tracking-wider sm:tracking-widest">Available for new opportunities</span>
+              <span className="text-[10px] sm:text-xs text-norcal-sage font-mono uppercase tracking-wider sm:tracking-widest">Available for new projects</span>
             </motion.div>
           </motion.div>
 
