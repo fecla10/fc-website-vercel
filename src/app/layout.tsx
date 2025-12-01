@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   keywords: ['data analyst', 'project manager', 'AI', 'analytics', 'international trade', 'portfolio'],
   authors: [{ name: 'Felipe Clavijo' }],
   creator: 'Felipe Clavijo',
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'Felipe Clavijo - Data Operations Strategist',
     description: 'Personal portfolio showcasing expertise in data analytics, AI, and project management.',
