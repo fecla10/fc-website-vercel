@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   creator: 'Felipe Clavijo',
   icons: {
     icon: [
-      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.jpg', type: 'image/jpeg' },
     ],
-    apple: '/favicon.png',
+    apple: '/favicon.jpg',
   },
   openGraph: {
     title: 'Felipe Clavijo - Data Operations Strategist',
