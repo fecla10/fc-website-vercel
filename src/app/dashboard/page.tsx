@@ -82,7 +82,14 @@ export default function Dashboard() {
                         <>
                           {line.split('✓').map((part, i, arr) => (
                             <span key={i}>
-                              <span className="boot-text-part">{part}</span>
+                              <MatrixText 
+                                key={`matrix-${part}-${index}-${i}`}
+                                text={part} 
+                                trigger={triggeredLines.has(index)} 
+                                delay={0} 
+                                speed={15}
+                                className="boot-text boot-text-part"
+                              />
                               {i < arr.length - 1 && (
                                 <span className="boot-checkmark">✓</span>
                               )}
@@ -90,16 +97,14 @@ export default function Dashboard() {
                           ))}
                         </>
                       ) : (
-                        <span className="boot-text-part">
-                          <MatrixText 
-                            key={`matrix-${line}-${index}`}
-                            text={line} 
-                            trigger={triggeredLines.has(index)} 
-                            delay={0} 
-                            speed={15}
-                            className="boot-text"
-                          />
-                        </span>
+                        <MatrixText 
+                          key={`matrix-${line}-${index}`}
+                          text={line} 
+                          trigger={triggeredLines.has(index)} 
+                          delay={0} 
+                          speed={15}
+                          className="boot-text boot-text-part"
+                        />
                       )}
                     </div>
                   </motion.div>
