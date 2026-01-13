@@ -126,9 +126,11 @@ export default function Interactive3DGlobe() {
 
   useEffect(() => {
     const updateDimensions = () => {
+      const isMobile = window.innerWidth < 640
+      const isTablet = window.innerWidth >= 640 && window.innerWidth < 1024
       setDimensions({
-        width: window.innerWidth > 768 ? 600 : window.innerWidth - 40,
-        height: window.innerWidth > 768 ? 600 : 400
+        width: isMobile ? Math.min(window.innerWidth - 32, 343) : isTablet ? 500 : 600,
+        height: isMobile ? 300 : isTablet ? 450 : 600
       })
     }
 
@@ -209,9 +211,9 @@ export default function Interactive3DGlobe() {
       />
 
       {selectedExp && (
-        <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm p-4 rounded-lg shadow-xl max-w-sm z-40">
-          <div className="flex justify-between items-start mb-3">
-            <h3 className="font-bold text-white text-lg">{selectedExp.flag} {selectedExp.city}, {selectedExp.country}</h3>
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/80 backdrop-blur-sm p-3 sm:p-4 rounded-lg shadow-xl max-w-[calc(100%-1rem)] sm:max-w-sm z-40">
+          <div className="flex justify-between items-start mb-2 sm:mb-3 gap-2">
+            <h3 className="font-bold text-white text-sm sm:text-base md:text-lg break-words">{selectedExp.flag} {selectedExp.city}, {selectedExp.country}</h3>
             <button 
               onClick={() => {
                 setSelectedExp(null)
@@ -220,15 +222,15 @@ export default function Interactive3DGlobe() {
                   globeEl.current.controls().autoRotate = true
                 }
               }} 
-              className="text-gray-300 hover:text-white text-xl leading-none"
+              className="text-gray-300 hover:text-white text-lg sm:text-xl leading-none shrink-0"
             >
               ×
             </button>
           </div>
-          <p className="text-sm font-medium mb-2" style={{color: selectedExp.color}}>
+          <p className="text-xs sm:text-sm font-medium mb-2 break-words" style={{color: selectedExp.color}}>
             {selectedExp.role} ({selectedExp.period})
           </p>
-          <p className="text-gray-300 text-sm leading-relaxed">{selectedExp.description}</p>
+          <p className="text-gray-300 text-xs sm:text-sm leading-relaxed break-words">{selectedExp.description}</p>
         </div>
       )}
 

@@ -17,13 +17,23 @@ export default function MatrixText({
   speed = 30,
   trigger = false,
 }: MatrixTextProps) {
-  const [displayText, setDisplayText] = useState(text)
+  const [displayText, setDisplayText] = useState('')
   const hasAnimatedRef = useRef(false)
   const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789█▓▒░'
 
   useEffect(() => {
-    if (!trigger || hasAnimatedRef.current) return
+    if (!trigger) {
+      setDisplayText('')
+      return
+    }
+    
+    if (hasAnimatedRef.current) {
+      setDisplayText(text)
+      return
+    }
+
     hasAnimatedRef.current = true
+    setDisplayText('')
 
     let currentIndex = 0
     let scrambleCount = 0
@@ -66,5 +76,5 @@ export default function MatrixText({
     return () => clearTimeout(timeoutId)
   }, [trigger, text, delay, speed])
 
-  return <span className={className}>{displayText}</span>
+  return <span className={className}>{displayText || text}</span>
 }

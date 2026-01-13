@@ -86,38 +86,90 @@ export default function ChatInterface() {
   }
 
   return (
-    <div className="glass-card rounded-lg overflow-hidden">
-      {/* Chat Header */}
-      <div className="p-4 border-b border-white/10 bg-gradient-to-r from-cyan-500/10 to-purple-600/10">
-        <div className="flex items-center space-x-3">
-          <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-          <h3 className="text-lg font-semibold text-white">Francesca, Felipe&apos;s Assistant</h3>
-          <span className="text-sm text-gray-400">Online</span>
+    <div className="retro-terminal-window relative">
+      {/* Terminal Header Bar */}
+      <div className="retro-terminal-header-bar">
+        <div className="flex items-center gap-2">
+          <motion.span 
+            className="retro-text-green text-xs font-mono"
+            animate={{ opacity: [1, 0.7, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            [CHAT_INTERFACE]
+          </motion.span>
+          <span className="retro-text-gray text-xs font-mono">|</span>
+          <motion.span 
+            className="retro-text-amber text-xs font-mono"
+            animate={{ opacity: [1, 0.5, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          >
+            ACTIVE
+          </motion.span>
+          <motion.span 
+            className="retro-text-green text-xs font-mono ml-2"
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{ duration: 0.8, repeat: Infinity }}
+          >
+            ●
+          </motion.span>
+        </div>
+        <div className="flex items-center gap-1">
+          <motion.div 
+            className="w-2 h-2 bg-retro-green rounded-sm"
+            animate={{ opacity: [1, 0.5, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          ></motion.div>
+          <motion.div 
+            className="w-2 h-2 bg-retro-amber rounded-sm"
+            animate={{ opacity: [1, 0.5, 1] }}
+            transition={{ duration: 1.2, repeat: Infinity }}
+          ></motion.div>
+          <motion.div 
+            className="w-2 h-2 bg-red-500 rounded-sm"
+            animate={{ opacity: [1, 0.5, 1] }}
+            transition={{ duration: 0.8, repeat: Infinity }}
+          ></motion.div>
         </div>
       </div>
 
-      {/* Messages */}
-      <div className="h-96 overflow-y-auto p-4 space-y-4">
+      {/* Messages Area */}
+      <div className="retro-terminal-content h-[500px] overflow-y-auto">
         <AnimatePresence>
           {messages.map((message) => (
             <motion.div
               key={message.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              initial={{ opacity: 0, x: message.role === 'user' ? 20 : -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0 }}
+              className={`mb-4 ${message.role === 'user' ? 'text-right' : 'text-left'}`}
             >
-              <div
-                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                  message.role === 'user'
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
-                    : 'glass-card text-gray-300'
-                }`}
-              >
-                <p className="text-sm leading-relaxed">{message.content}</p>
-                <span className="text-xs opacity-70 mt-1 block">
-                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                </span>
+              <div className={`inline-block max-w-[85%] ${message.role === 'user' ? 'text-left' : ''}`}>
+                <div className="flex items-start gap-2 mb-1">
+                  {message.role === 'assistant' && (
+                    <span className="retro-text-green font-mono text-xs flex-shrink-0">&gt;</span>
+                  )}
+                  {message.role === 'user' && (
+                    <span className="retro-text-amber font-mono text-xs flex-shrink-0 ml-auto">USER&gt;</span>
+                  )}
+                  <span className={`text-xs font-mono retro-text-gray ${message.role === 'user' ? 'order-first' : ''}`}>
+                    [{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}]
+                  </span>
+                </div>
+                <motion.div 
+                  className={`retro-message-box ${message.role === 'user' ? 'retro-user-message' : 'retro-assistant-message'}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.p 
+                    className={`text-sm font-mono leading-relaxed ${message.role === 'user' ? 'retro-text-amber' : 'retro-text-green'}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {message.content}
+                  </motion.p>
+                </motion.div>
               </div>
             </motion.div>
           ))}
@@ -126,18 +178,50 @@ export default function ChatInterface() {
         {/* Loading indicator */}
         {isLoading && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex justify-start"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-start gap-2"
           >
-            <div className="glass-card px-4 py-2 rounded-lg">
-              <div className="flex items-center space-x-2">
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            <motion.span 
+              className="retro-text-green font-mono text-xs"
+              animate={{ opacity: [1, 0.5, 1] }}
+              transition={{ duration: 0.8, repeat: Infinity }}
+            >
+              &gt;
+            </motion.span>
+            <div className="retro-assistant-message">
+              <div className="flex items-center gap-2 flex-wrap">
+                <motion.span 
+                  className="retro-text-green font-mono text-sm"
+                  animate={{ opacity: [1, 0.7, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  PROCESSING
+                </motion.span>
+                <div className="flex gap-1">
+                  <motion.span
+                    className="retro-text-green font-mono text-lg"
+                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1, 0.8] }}
+                    transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                  >.</motion.span>
+                  <motion.span
+                    className="retro-text-green font-mono text-lg"
+                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1, 0.8] }}
+                    transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                  >.</motion.span>
+                  <motion.span
+                    className="retro-text-green font-mono text-lg"
+                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1, 0.8] }}
+                    transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                  >.</motion.span>
                 </div>
-                <span className="text-sm text-gray-400">Thinking...</span>
+                <motion.span 
+                  className="retro-text-gray font-mono text-xs ml-2"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  [Analyzing query...]
+                </motion.span>
               </div>
             </div>
           </motion.div>
@@ -147,27 +231,49 @@ export default function ChatInterface() {
       </div>
 
       {/* Input Form */}
-      <div className="p-4 border-t border-white/10">
-        <form onSubmit={handleSubmit} className="flex space-x-3">
+      <div className="retro-terminal-input-area border-t-2 border-retro-green/50">
+        <form onSubmit={handleSubmit} className="flex items-center gap-2 p-3">
+          <motion.span 
+            className="retro-text-green font-mono text-sm flex-shrink-0 typing-cursor"
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          >
+            &gt;
+          </motion.span>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about Felipe's experience, skills, or background..."
-            className="modern-input flex-1"
+            placeholder="Enter query..."
+            className="retro-terminal-input flex-1"
             disabled={isLoading}
+            autoFocus
           />
-          <button
+          <motion.button
             type="submit"
             disabled={!input.trim() || isLoading}
-            className="modern-button disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+            className="retro-button disabled:opacity-30 disabled:cursor-not-allowed"
+            whileHover={!isLoading && input.trim() ? { scale: 1.05 } : {}}
+            whileTap={!isLoading && input.trim() ? { scale: 0.95 } : {}}
           >
-            <span>Send</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
+            <motion.span 
+              className="retro-text-green font-mono text-xs"
+              animate={!isLoading && input.trim() ? { opacity: [1, 0.7, 1] } : {}}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              [EXECUTE]
+            </motion.span>
+          </motion.button>
         </form>
+        <div className="px-3 pb-2">
+          <motion.span 
+            className="retro-text-gray font-mono text-[10px]"
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            TIP: Ask about resume, experience, skills, education, or achievements
+          </motion.span>
+        </div>
       </div>
     </div>
   )

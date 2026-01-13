@@ -8,6 +8,7 @@ import ParticleDissolve from '@/components/ParticleDissolve'
 import AsciiWave from '@/components/AsciiWave'
 import MatrixText from '@/components/MatrixText'
 import dynamic from 'next/dynamic'
+import OperationsArchitecture from '@/components/sections/OperationsArchitecture'
 
 const Interactive3DGlobe = dynamic(() => import('@/components/Interactive3DGlobe'), { 
   ssr: false,
@@ -57,18 +58,18 @@ function ExpertiseContainer() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-6 sm:p-8 border border-norcal-stone/30"
+      className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-4 sm:p-6 md:p-8 border border-norcal-stone/30"
     >
-      <div className="mb-8 ml-1 border-l-2 border-norcal-clay/50 pl-3">
-        <h2 className="text-xs tracking-[0.2em] text-norcal-sage uppercase mb-1">
+      <div className="mb-6 sm:mb-8 ml-1 border-l-2 border-norcal-clay/50 pl-2 sm:pl-3">
+        <h2 className="text-xs font-mono tracking-[0.2em] text-norcal-clay uppercase mb-1">
           <MatrixText text="Expertise" trigger={isTriggered} delay={0} speed={60} />
         </h2>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12 pl-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-8 sm:gap-y-12 pl-2 sm:pl-4">
         {expertiseData.map((category, catIndex) => (
           <div key={category.title}>
-            <h4 className="text-norcal-sand text-xs font-bold uppercase tracking-widest mb-4 opacity-70">
+            <h4 className="text-white text-sm font-bold uppercase tracking-widest mb-4">
               <MatrixText text={category.title} trigger={isTriggered} delay={200 + catIndex * 300} speed={50} />
             </h4>
             <ul className="space-y-2">
@@ -87,22 +88,23 @@ function ExpertiseContainer() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-norcal-dark">
       {/* ASCII Wave Background */}
       <AsciiWave />
       
       {/* Modern Startup Hero Section */}
-      <section className="startup-hero pt-20">
+      <section className="startup-hero pt-4">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-12"
+            className="text-center mb-12 mt-16"
           >
             <motion.div 
-              className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full startup-card border border-norcal-clay/30 mb-8 cursor-default"
+              className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-norcal-stone/60 backdrop-blur-sm border-2 border-norcal-clay/70 mb-8 cursor-default shadow-xl"
+              style={{ borderColor: 'rgba(196, 127, 98, 0.7)' }}
               animate={{ 
                 scale: [1, 1.02, 1],
                 y: [0, -4, 0],
@@ -114,7 +116,7 @@ export default function Home() {
               }}
               whileHover={{ 
                 scale: 1.05,
-                borderColor: 'rgba(196, 127, 98, 0.6)',
+                borderColor: 'rgba(196, 127, 98, 0.8)',
                 transition: { duration: 0.3 }
               }}
             >
@@ -135,69 +137,56 @@ export default function Home() {
           </motion.div>
 
           {/* Main Title */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <motion.h1 
-              className="startup-title mb-8"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.85] sm:leading-[0.82] tracking-tighter mb-6 sm:mb-8 px-2 text-norcal-sand"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               Building the Future
               <br />
-              <span className="startup-accent">with Data & AI</span>
+              <span className="startup-accent italic">with Data & AI</span>
             </motion.h1>
 
             <motion.p 
-              className="startup-subtitle max-w-2xl mx-auto mb-16"
+              className="startup-subtitle max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Strategic data consultant specializing in AI automation, business intelligence, 
-              and international market expansion. Transforming complex data into actionable insights 
-              that drive growth and innovation.
+              Automation architect specializing in AI agents, data pipelines, and intelligent workflows. I help companies eliminate manual processes, scale operations, and turn complex data into actionable growth.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
+              className="flex justify-center items-center mb-12 sm:mb-16 md:mb-20 px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <Link href="/dashboard" className="startup-cta inline-flex items-center group w-full sm:w-auto justify-center">
+              <Link href="/dashboard" className="startup-cta inline-flex items-center group w-full sm:w-auto justify-center max-w-xs sm:max-w-none">
                 <span className="relative z-10">Talk with Francesca</span>
                 <svg className="ml-3 w-4 h-4 sm:w-5 sm:h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </Link>
-              
-              <a 
-                href="/Felipe_Clavijo_Resume.pdf" 
-                download 
-                className="px-6 py-4 sm:px-10 sm:py-5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-widest text-norcal-sage border border-norcal-stone hover:border-norcal-clay hover:text-norcal-clay transition-all duration-500 inline-flex items-center group w-full sm:w-auto justify-center"
-              >
-                <svg className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Download Resume
-              </a>
             </motion.div>
           </div>
 
           {/* Profile & Globe Grid */}
-          <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-8 items-center mb-8 sm:mb-12">
             {/* Left Column - Profile */}
             <motion.div 
-              className="flex justify-center"
+              className="flex justify-center order-1 lg:order-none"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
             >
-              <div className="relative">
+              <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-none">
                 <div 
                   id="hero-profile-image"
-                  className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-xl overflow-hidden startup-card border border-norcal-clay/30 shadow-2xl"
+                  className="w-full aspect-square max-w-[256px] sm:max-w-[320px] lg:max-w-[384px] mx-auto rounded-xl overflow-hidden startup-card border border-norcal-clay/30 shadow-2xl"
                 >
                   <Image
                     src="/felipe-profile.jpg"
@@ -209,13 +198,13 @@ export default function Home() {
                     style={{ objectPosition: 'center 22%' }}
                   />
                 </div>
-                <div className="absolute -inset-3 sm:-inset-4 rounded-xl border border-norcal-clay/20 animate-pulse"></div>
+                <div className="absolute -inset-2 sm:-inset-3 lg:-inset-4 rounded-xl border border-norcal-clay/20 animate-pulse"></div>
               </div>
             </motion.div>
 
             {/* Right Column - Globe */}
             <motion.div 
-              className="relative"
+              className="relative order-2 lg:order-none w-full"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
@@ -232,18 +221,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-norcal-stone to-transparent my-12 opacity-50 relative z-10"></div>
-
-      {/* Features Section */}
+      {/* Expertise Container - Right after Profile & Globe */}
       <section className="startup-section relative z-10">
-        <div className="max-w-3xl mx-auto px-6">
-          {/* Expertise Container with Matrix Effect */}
-          <ExpertiseContainer />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 sm:gap-8 items-start lg:items-center">
+            {/* Expertise Container with Matrix Effect */}
+            <ExpertiseContainer />
 
-          {/* Tree ASCII - between containers */}
-          <div className="flex justify-center py-12 opacity-60 hover:opacity-90 transition-opacity duration-500">
-            <pre className="font-mono text-[6px] sm:text-[8px] lg:text-[10px] leading-[8px] sm:leading-[10px] lg:leading-[12px] text-norcal-sage whitespace-pre">
+            {/* Tree ASCII - to the right of Expertise */}
+            <div className="flex justify-center lg:justify-end opacity-60 hover:opacity-90 transition-opacity duration-500 order-first lg:order-none">
+              <div className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-4 sm:p-6 lg:p-8 border border-norcal-stone/30 cursor-pointer transition-all duration-300 group">
+                <pre className="font-mono text-[6px] sm:text-[8px] lg:text-[10px] leading-[8px] sm:leading-[10px] lg:leading-[12px] text-norcal-sage whitespace-pre group-hover:text-orange-500 group-active:text-orange-600 transition-colors duration-300">
 {`      &&& &&  & &&
   && &\\/&\\|& ()|/ @, &&
   &\\/(/&/&||/& /_/)_&/_&
@@ -257,25 +245,34 @@ export default function Home() {
        _____[___]_____
        \\             /
         \\___________/`}
-            </pre>
+                </pre>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Contact Section */}
+      {/* Operations Architecture - Right after Expertise section */}
+      <OperationsArchitecture />
+
+      {/* Contact Section - Right after OperationsArchitecture */}
+      <section className="startup-section relative z-10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-8 border border-norcal-stone/30 mb-20"
+            className="bg-norcal-dark/60 backdrop-blur-[2px] rounded-xl p-6 sm:p-8 border border-norcal-stone/30 mb-6 sm:mb-8 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-norcal-clay/20 hover:border-norcal-clay/50"
           >
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-              <div>
-                <h2 className="text-norcal-sand text-lg mb-2">Open Frequency</h2>
-                <p className="text-norcal-sage text-xs max-w-xs leading-relaxed">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8">
+              <div className="flex-1 min-w-0">
+                <h2 className="text-norcal-sand text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3 font-serif">Open Frequency</h2>
+                <p className="text-norcal-sage text-xs sm:text-sm max-w-xs leading-relaxed break-words">
                   Always open to discussions on data, technology, and the intersection of business strategy.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto shrink-0">
                 <a 
                   href="https://www.linkedin.com/in/felipe-clavijoc/" 
                   target="_blank" 
@@ -299,13 +296,16 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="mt-24 flex justify-between items-end text-[10px] text-norcal-mist uppercase tracking-widest">
-              <span>Los Angeles, CA</span>
-              <span>© 2025</span>
+            <div className="mt-12 sm:mt-16 md:mt-24 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 sm:gap-0 text-[9px] sm:text-[10px] text-norcal-mist uppercase tracking-widest">
+              <span className="whitespace-nowrap">Los Angeles, CA</span>
+              <span className="tracking-[0.2em] sm:tracking-[0.25em] text-center sm:text-right break-words sm:break-normal">© 2025 FELIPE CLAVIJO | AI & AUTOMATION SOLUTIONS</span>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-norcal-stone to-transparent my-12 opacity-50 relative z-10"></div>
 
       {/* Particle Dissolve Effect */}
       <ParticleDissolve targetImageId="hero-profile-image" autoStart={true} />

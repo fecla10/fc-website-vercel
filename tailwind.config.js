@@ -81,7 +81,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"Space Mono"', 'JetBrains Mono', 'monospace'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
     },
   },

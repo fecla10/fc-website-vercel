@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Space_Mono } from 'next/font/google'
+import { Space_Mono, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 
@@ -7,6 +7,15 @@ const spaceMono = Space_Mono({
   weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-mono',
+})
+
+const playfairDisplay = Playfair_Display({ 
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-serif',
+  style: ['normal', 'italic'],
 })
 
 export const metadata: Metadata = {
@@ -55,7 +64,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${spaceMono.className} min-h-screen bg-norcal-dark text-norcal-sand selection:bg-norcal-clay selection:text-white`}>
+      <body className={`${spaceMono.variable} ${playfairDisplay.variable} ${spaceMono.className} min-h-screen bg-norcal-dark text-norcal-sand selection:bg-norcal-clay selection:text-white`}>
         <Navigation />
         <main className="relative">
           {children}

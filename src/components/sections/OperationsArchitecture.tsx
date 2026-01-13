@@ -28,22 +28,22 @@ export default function OperationsArchitecture() {
   ]
 
   return (
-    <section className="py-24 px-4 md:px-8 border-b border-norcal-stone/30 bg-norcal-dark/50 overflow-hidden relative min-h-[1300px]">
+    <section className="py-12 sm:py-16 md:py-24 px-4 md:px-8 border-b border-norcal-stone/30 bg-norcal-dark/50 overflow-hidden relative min-h-0 sm:min-h-[800px] md:min-h-[1000px] lg:min-h-[1300px]">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-24 flex flex-col lg:flex-row justify-between items-start gap-12">
+        <div className="mb-12 sm:mb-16 md:mb-24 flex flex-col lg:flex-row justify-between items-start gap-8 sm:gap-12">
           <div className="max-w-3xl">
-            <h2 className="text-xs font-mono font-bold tracking-[0.6em] uppercase mb-6 text-norcal-clay flex items-center gap-4">
-              <span className="w-16 h-[1px] bg-norcal-clay"></span>
-              OPERATIONS_ARCHITECTURE // SPEC_01.A
+            <h2 className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.4em] sm:tracking-[0.6em] uppercase mb-4 sm:mb-6 text-norcal-clay flex items-center gap-2 sm:gap-4">
+              <span className="w-8 sm:w-16 h-[1px] bg-norcal-clay"></span>
+              <span className="break-words">OPERATIONS_ARCHITECTURE // SPEC_01.A</span>
             </h2>
-            <h3 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-6xl leading-[0.82] tracking-tighter mb-10 text-norcal-sand">
+            <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[0.85] sm:leading-[0.82] tracking-tighter mb-6 sm:mb-8 md:mb-10 text-norcal-sand">
               End-to-End Automation
               <br />
               <span className="italic">& Intelligence Pipeline.</span>
             </h3>
           </div>
 
-          <div className="w-full lg:w-[380px] shrink-0">
+          <div className="w-full lg:w-[380px] shrink-0 order-first lg:order-none">
             <TelemetryBox
               title="PIPELINE TELEMETRY"
               metrics={telemetryMetrics}
@@ -57,20 +57,20 @@ export default function OperationsArchitecture() {
         </div>
 
         {/* Deployment Status Footer */}
-        <div className="mt-6 pt-4 border-t border-dotted border-norcal-stone/30 flex justify-between items-center mb-12">
-          <span className="text-[9px] font-mono tracking-[0.2em] uppercase text-norcal-sage opacity-60">
+        <div className="mt-4 sm:mt-6 pt-4 border-t border-dotted border-norcal-stone/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-8 sm:mb-12">
+          <span className="text-[8px] sm:text-[9px] font-mono tracking-[0.15em] sm:tracking-[0.2em] uppercase text-norcal-sage opacity-60 break-words">
             Deployment Status: PRODUCTION
           </span>
-          <button className="text-[10px] font-mono font-bold border-b border-norcal-sand hover:opacity-50 transition-opacity">
+          <button className="text-[9px] sm:text-[10px] font-mono font-bold border-b border-norcal-sand hover:opacity-50 transition-opacity whitespace-nowrap">
             VIEW SYSTEM LOGS
           </button>
         </div>
 
         {/* Infrastructure Schematic */}
-        <div className="relative flex-grow flex flex-col items-center justify-center mt-12">
-          <div className="relative w-full max-w-[1000px] h-[1000px] flex items-center justify-center">
+        <div className="relative flex-grow flex flex-col items-center justify-center mt-8 sm:mt-12 overflow-x-auto">
+          <div className="relative w-full max-w-[1000px] min-h-[600px] sm:min-h-[800px] md:h-[1000px] flex items-center justify-center px-4 sm:px-0">
             {/* Left side labels */}
-            <div className="absolute left-0 h-full flex flex-col justify-between py-24 z-20">
+            <div className="hidden md:flex absolute left-0 h-full flex-col justify-between py-24 z-20">
               {[
                 { tier: 'TIER 01', title: 'Source Connections', desc: 'API integrations, database pipelines, and third-party data feeds.' },
                 { tier: 'TIER 02', title: 'Transformation Engine', desc: 'ETL workflows, data validation, and normalization rules.' },
@@ -93,7 +93,7 @@ export default function OperationsArchitecture() {
             </div>
 
             {/* Right side stats */}
-            <div className="absolute right-0 h-full flex flex-col justify-around py-32 text-right pointer-events-none opacity-40 font-mono text-[9px] leading-relaxed uppercase tracking-[0.2em] z-20 text-norcal-sage">
+            <div className="hidden md:flex absolute right-0 h-full flex-col justify-around py-32 text-right pointer-events-none opacity-40 font-mono text-[9px] leading-relaxed uppercase tracking-[0.2em] z-20 text-norcal-sage">
               <div>DATA_SOURCES: 20+<br />UPTIME: 99.9%</div>
               <div>API_ENDPOINTS: 45+<br />SYNC_FREQ: Real-time</div>
               <div>THROUGHPUT: 50K rows/hr<br />ERROR_RATE: 0.1%</div>
@@ -102,7 +102,7 @@ export default function OperationsArchitecture() {
             </div>
 
             {/* SVG Schematic */}
-            <svg viewBox="0 0 600 1000" className="w-full h-full overflow-visible">
+            <svg viewBox="0 0 600 1000" className="w-full h-full max-h-[600px] sm:max-h-[800px] md:max-h-[1000px] overflow-visible">
               <defs>
                 <linearGradient id="pulseGradient" x1="0" y1="720" x2="0" y2="80" gradientUnits="userSpaceOnUse">
                   <stop offset="0%" stopColor="#c47f62" />
@@ -230,24 +230,24 @@ export default function OperationsArchitecture() {
             </svg>
 
             {/* Overlay stat boxes */}
-            <div className="absolute top-[15%] left-[65%] p-4 border border-norcal-stone/30 bg-norcal-stone/60 backdrop-blur-md shadow-lg flex flex-col gap-2">
+            <div className="absolute top-[10%] sm:top-[15%] right-2 sm:right-4 md:left-[65%] md:right-auto p-3 sm:p-4 border border-norcal-stone/30 bg-norcal-stone/60 backdrop-blur-md shadow-lg flex flex-col gap-2 max-w-[140px] sm:max-w-none">
               <div className="flex justify-between items-center">
                 <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-norcal-sage">AGENT_PULSE</span>
                 <div className="w-1.5 h-1.5 bg-norcal-clay animate-ping"></div>
               </div>
-              <div className="text-[18px] font-mono font-bold tabular-nums text-norcal-sand">24.3 ms</div>
-              <span className="text-[7px] font-mono opacity-40 text-norcal-sage">avg_response_time</span>
+              <div className="text-[14px] sm:text-[18px] font-mono font-bold tabular-nums text-norcal-sand">24.3 ms</div>
+              <span className="text-[6px] sm:text-[7px] font-mono opacity-40 text-norcal-sage break-words">avg_response_time</span>
             </div>
           </div>
         </div>
 
         {/* Bottom capabilities grid */}
-        <div className="mt-32 mb-16 pb-16 relative z-10">
-          <h2 className="text-xs font-mono font-bold tracking-[0.6em] uppercase mb-6 text-norcal-clay flex items-center gap-4">
-            <span className="w-16 h-[1px] bg-norcal-clay"></span>
-            CAPABILITIES // SPEC_02.A
+        <div className="mt-16 sm:mt-24 md:mt-32 mb-12 sm:mb-16 pb-12 sm:pb-16 relative z-10">
+          <h2 className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.4em] sm:tracking-[0.6em] uppercase mb-4 sm:mb-6 text-norcal-clay flex items-center gap-2 sm:gap-4">
+            <span className="w-8 sm:w-16 h-[1px] bg-norcal-clay"></span>
+            <span className="break-words">CAPABILITIES // SPEC_02.A</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-t border-norcal-stone/20 pt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 border-t border-norcal-stone/20 pt-8 sm:pt-12 md:pt-16">
           {[
             { num: '01', title: 'PERSPECTIVE', subtitle: 'Global Fluency', desc: 'International background across Europe and the Americas. I navigate cross-border operations, diverse markets, and async-first collaboration with ease.', color: 'text-norcal-clay' },
             { num: '02', title: 'METHODOLOGY', subtitle: 'Quantitative Rigor', desc: 'Economics and data science foundation. Every automation is built on validated logic, clean architecture, and measurable outcomes.', color: 'text-blue-400' },
@@ -262,13 +262,13 @@ export default function OperationsArchitecture() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group cursor-default"
             >
-              <div className={`text-[10px] font-mono font-bold ${cap.color} mb-5 tracking-[0.4em] uppercase`}>
+              <div className={`text-[9px] sm:text-[10px] font-mono font-bold ${cap.color} mb-3 sm:mb-5 tracking-[0.3em] sm:tracking-[0.4em] uppercase`}>
                 {cap.num} {'//'} {cap.title}
               </div>
-              <h4 className="font-serif text-2xl md:text-3xl mb-4 italic tracking-tight text-norcal-sand group-hover:text-norcal-clay transition-colors duration-300">
+              <h4 className="font-serif text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4 italic tracking-tight text-norcal-sand group-hover:text-norcal-clay transition-colors duration-300">
                 {cap.subtitle}
               </h4>
-              <p className="text-sm font-mono leading-relaxed opacity-60 text-norcal-sage group-hover:text-norcal-sand group-hover:opacity-100 transition-colors duration-300">
+              <p className="text-xs sm:text-sm font-mono leading-relaxed opacity-60 text-norcal-sage group-hover:text-norcal-sand group-hover:opacity-100 transition-colors duration-300">
                 {cap.desc}
               </p>
             </motion.div>
@@ -277,24 +277,24 @@ export default function OperationsArchitecture() {
         </div>
 
         {/* Active Automation Registry */}
-        <div id="capabilities" className="mt-16">
-          <div className="p-6 md:p-8 flex flex-col">
-            <div className="flex justify-between items-end mb-6">
+        <div id="capabilities" className="mt-12 sm:mt-16">
+          <div className="p-4 sm:p-6 md:p-8 flex flex-col">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 gap-4 sm:gap-0">
               <div>
-                <h2 className="text-xs font-mono font-bold tracking-[0.3em] uppercase mb-2 text-norcal-sage">
+                <h2 className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-2 text-norcal-sage">
                   Automation Stack
                 </h2>
-                <p className="font-serif text-2xl md:text-3xl italic text-norcal-sand">
+                <p className="font-serif text-xl sm:text-2xl md:text-3xl italic text-norcal-sand">
                   Active Automation Registry
                 </p>
               </div>
-              <div className="text-right font-mono text-[10px] tracking-widest leading-tight opacity-60">
+              <div className="text-left sm:text-right font-mono text-[9px] sm:text-[10px] tracking-widest leading-tight opacity-60">
                 Uptime: 99.9%<br />
                 Active Integrations: 47
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               {[
                 { id: 'AGENT-001', name: 'Data Pipeline Orchestrator', status: 'active', latency: '8ms', indicatorColor: 'green' },
                 { id: 'AGENT-002', name: 'Document Intelligence', status: 'active', latency: '12ms', indicatorColor: 'orange' },
@@ -319,18 +319,18 @@ export default function OperationsArchitecture() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="border border-norcal-stone/30 p-3 relative group hover:bg-norcal-stone/20 transition-colors"
                   >
-                    <div className="flex justify-between items-start mb-3">
-                      <span className="text-[9px] font-mono tracking-widest opacity-40">
+                    <div className="flex justify-between items-start mb-2 sm:mb-3">
+                      <span className="text-[8px] sm:text-[9px] font-mono tracking-widest opacity-40 break-words">
                         {node.id}
                       </span>
-                      <div className={`w-2 h-2 rounded-full ${indicatorColorMap[node.indicatorColor]} ${node.status === 'syncing' ? 'animate-pulse' : ''}`}></div>
+                      <div className={`w-2 h-2 rounded-full shrink-0 ml-2 ${indicatorColorMap[node.indicatorColor]} ${node.status === 'syncing' ? 'animate-pulse' : ''}`}></div>
                     </div>
                     
-                    <h4 className="font-serif text-lg md:text-xl mb-2 tracking-tight text-norcal-sand">
+                    <h4 className="font-serif text-base sm:text-lg md:text-xl mb-2 tracking-tight text-norcal-sand break-words">
                       {node.name}
                     </h4>
                     
-                    <div className="flex justify-between items-center text-[10px] font-mono mt-1">
+                    <div className="flex justify-between items-center text-[9px] sm:text-[10px] font-mono mt-1">
                       <span className="font-bold tracking-tighter uppercase">
                         {node.status === 'syncing' ? 'SYNCING' : node.status === 'active' ? 'ACTIVE' : 'STANDBY'}
                       </span>
@@ -346,7 +346,7 @@ export default function OperationsArchitecture() {
         </div>
 
         {/* Engagement Process Content */}
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <EngagementProcessContent />
         </div>
       </div>
