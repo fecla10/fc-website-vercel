@@ -795,6 +795,10 @@
     margin-top: 1rem;
   }
 
+  .row--input .glyph {
+    color: #00ff00 !important;
+  }
+
   .glyph {
     flex-shrink: 0;
     width: 1rem;
@@ -928,7 +932,7 @@
     background: transparent;
     border: none;
     outline: none;
-    color: #e0e0e0;
+    color: #ffffff;
     font-family: 'JetBrains Mono', 'Space Mono', monospace;
     font-size: 1rem;
     resize: none;
@@ -938,7 +942,7 @@
   }
 
   .prompt-input::placeholder {
-    color: #666;
+    color: #00ff00;
   }
 
   .prompt-input:focus {

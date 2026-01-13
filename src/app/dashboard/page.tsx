@@ -3,14 +3,12 @@
 import { Suspense, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ChatInterface from '@/components/ChatInterface'
-import MatrixText from '@/components/MatrixText'
 import ClaudeCodeInterface from '@/components/ClaudeCodeInterface'
 
 export default function Dashboard() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString())
   const [bootSequence, setBootSequence] = useState<string[]>([])
   const [showInterface, setShowInterface] = useState(false)
-  const [triggeredLines, setTriggeredLines] = useState<Set<number>>(new Set())
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,7 +34,6 @@ export default function Dashboard() {
     const interval = setInterval(() => {
       if (index < bootLines.length) {
         setBootSequence(prev => [...prev, bootLines[index]])
-        setTriggeredLines(prev => new Set(Array.from(prev).concat([index])))
         index++
       } else {
         clearInterval(interval)
@@ -67,6 +64,7 @@ export default function Dashboard() {
             {/* Boot Sequence */}
             <div className="space-y-0 min-h-[120px]">
               {bootSequence.map((line, index) => {
+                if (!line) return null
                 const hasCheckmark = line.includes('✓')
                 
                 return (
@@ -82,14 +80,7 @@ export default function Dashboard() {
                         <>
                           {line.split('✓').map((part, i, arr) => (
                             <span key={i}>
-                              <MatrixText 
-                                key={`matrix-${part}-${index}-${i}`}
-                                text={part} 
-                                trigger={triggeredLines.has(index)} 
-                                delay={0} 
-                                speed={15}
-                                className="boot-text boot-text-part"
-                              />
+                              <span className="boot-text boot-text-part">{part}</span>
                               {i < arr.length - 1 && (
                                 <span className="boot-checkmark">✓</span>
                               )}
@@ -97,14 +88,7 @@ export default function Dashboard() {
                           ))}
                         </>
                       ) : (
-                        <MatrixText 
-                          key={`matrix-${line}-${index}`}
-                          text={line} 
-                          trigger={triggeredLines.has(index)} 
-                          delay={0} 
-                          speed={15}
-                          className="boot-text boot-text-part"
-                        />
+                        <span className="boot-text boot-text-part">{line}</span>
                       )}
                     </div>
                   </motion.div>
