@@ -5,6 +5,7 @@ import ActiveAutomationRegistry from '@/components/sections/ActiveAutomationRegi
 import OperationsArchitecture from '@/components/sections/OperationsArchitecture'
 import SolutionsCatalog from '@/components/sections/SolutionsCatalog'
 import EngagementProcess from '@/components/sections/EngagementProcess'
+import ToolsIntegration from '@/components/sections/ToolsIntegration'
 import SystemStatus from '@/components/sections/SystemStatus'
 
 export default function AutomationPage() {
@@ -19,6 +20,7 @@ export default function AutomationPage() {
         <SolutionsCatalog />
       </div>
       <div id="process">
+        <ToolsIntegration />
         <EngagementProcess />
       </div>
       <SystemStatus />

@@ -1,0 +1,281 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
+// ─── SVG Icons ────────────────────────────────────────────────────────────────
+
+const icons: Record<string, JSX.Element> = {
+  GitHub: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+    </svg>
+  ),
+  Vercel: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M24 22.525H0l12-21.05 12 21.05z" />
+    </svg>
+  ),
+  Figma: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.026-4.49 4.515-4.49c2.489 0 4.515 2.014 4.515 4.49S10.661 24 8.172 24zm0-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019 3.019-1.355 3.019-3.019-1.354-3.019-3.019-3.019zm7.856.49h-4.588v-1.471h4.588c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117v7.509h-1.471V8.981h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49z" />
+    </svg>
+  ),
+  Slack: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zm2.521-10.123a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" />
+    </svg>
+  ),
+  Notion: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466l1.823 1.447zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933l3.222-.187zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
+    </svg>
+  ),
+  Gmail: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.907 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+    </svg>
+  ),
+  Stripe: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z" />
+    </svg>
+  ),
+  HubSpot: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M18.164 7.931V5.085a2.198 2.198 0 0 0 1.266-1.978V3.04a2.198 2.198 0 0 0-2.197-2.198h-.067a2.197 2.197 0 0 0-2.196 2.198v.067a2.197 2.197 0 0 0 1.254 1.974v2.85a6.232 6.232 0 0 0-2.957 1.302L5.765 3.86a2.432 2.432 0 1 0-1.342 1.31l7.298 5.205a6.25 6.25 0 0 0-.926 3.268c0 1.19.333 2.3.912 3.245l-2.22 2.22a1.96 1.96 0 0 0-.572-.092 1.974 1.974 0 1 0 1.974 1.974 1.95 1.95 0 0 0-.093-.574l2.192-2.192A6.268 6.268 0 1 0 18.164 7.93zm-2.997 8.54a3.537 3.537 0 1 1 0-7.074 3.537 3.537 0 0 1 0 7.074z" />
+    </svg>
+  ),
+  Zoom: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zM8 8.4A1.6 1.6 0 0 0 6.4 10v4.4h8.8A1.6 1.6 0 0 0 16.8 12V7.6L8 8.4zm9.6 1.92-2.4 1.68v1.6l2.4 1.68V10.32z" />
+    </svg>
+  ),
+  Airtable: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M11.36.906L1.108 4.701a.813.813 0 0 0 0 1.512l10.272 3.82a2.436 2.436 0 0 0 1.703 0l10.266-3.82a.812.812 0 0 0 0-1.512L13.063.906a2.437 2.437 0 0 0-1.702 0zM1.054 8.58a.813.813 0 0 0-.555.76v8.96c0 .39.28.73.664.808l9.504 1.875c.529.104 1.051-.275 1.051-.809V10.21a.813.813 0 0 0-.61-.79L1.612 7.786a.813.813 0 0 0-.558.794zm21.9 0a.81.81 0 0 0-.557-.793l-9.493 1.633a.813.813 0 0 0-.61.79v9.967c0 .533.521.912 1.051.808l9.504-1.875a.813.813 0 0 0 .664-.808V9.34a.811.811 0 0 0-.558-.76z" />
+    </svg>
+  ),
+  Linear: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M0 14.008l9.992 9.992A12 12 0 0 1 0 14.008zm0-4.596l14.604 14.6A12.03 12.03 0 0 1 9.994 24L0 14.006v-4.594zm16.355 13.42L.223 6.695A12 12 0 0 1 23.778 6.7l-7.423 16.13zM1.518 3.738L20.26 22.48A12.013 12.013 0 0 1 15.963 24L0 8.037a12.013 12.013 0 0 1 1.518-4.299zm3.325-2.733L23.991 20.16A12 12 0 0 0 4.843 1.005z" />
+    </svg>
+  ),
+  'Google Drive': (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M6.28 11.578L0 22.192h5.038l6.284-10.614zm1.065-1.8l3.14-5.302L7.346 0 1.065 10.79zm9.282.9h6.088L14.68 0h-6.09zm-1.578 2.7H3.95L1.062 18.59h17.866zm5.014 0l-3.46 5.814H24z" />
+    </svg>
+  ),
+  Dropbox: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M6 0L0 3.882l6 3.883 6-3.883zm12 0l-6 3.882 6 3.883 6-3.883zM0 11.647l6 3.883 6-3.883-6-3.883zm18-3.882l-6 3.883 6 3.883 6-3.883zM6 16.588l6 3.883 6-3.883-6-3.882z" />
+    </svg>
+  ),
+  X: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  ),
+  Jira: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M11.571 11.429L6.429 6.286A6 6 0 0 0 6 12a6 6 0 0 0 5.571 5.985v-6.556zm1.714 0v6.556A6 6 0 0 0 18 12a6 6 0 0 0-.429-5.714L13.285 11.43zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2a10 10 0 0 1 7.174 3.04L12 12.345 4.826 5.04A10 10 0 0 1 12 2zm0 20a10 10 0 0 1-7.174-3.04L12 11.654l7.174 7.306A10 10 0 0 1 12 22z" />
+    </svg>
+  ),
+  Reddit: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
+    </svg>
+  ),
+  Asana: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M17.653 8.53a4.055 4.055 0 1 1 0 8.11 4.055 4.055 0 0 1 0-8.11zm-11.306 0a4.055 4.055 0 1 1 0 8.11 4.055 4.055 0 0 1 0-8.11zM12 4.42a4.055 4.055 0 1 1 0 8.11 4.055 4.055 0 0 1 0-8.11z" />
+    </svg>
+  ),
+  Intercom: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M21 0H3C1.344 0 0 1.344 0 3v18c0 1.656 1.344 3 3 3h18c1.656 0 3-1.344 3-3V3c0-1.656-1.344-3-3-3zm-2.438 14.664c-.06.08-.155.136-.262.136a.35.35 0 0 1-.205-.07C16.083 13.044 14.095 12.3 12 12.3c-2.095 0-4.083.744-6.095 2.43a.354.354 0 0 1-.205.07c-.107 0-.202-.055-.262-.136a.33.33 0 0 1-.042-.283c.47-1.82 1.283-3.418 2.374-4.638 1.1-1.233 2.455-1.917 3.864-1.917.012 0 .024 0 .036.003.012-.003.024-.003.036-.003 1.409 0 2.764.684 3.864 1.917 1.091 1.22 1.904 2.818 2.374 4.638a.332.332 0 0 1-.042.283zM7 10a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+    </svg>
+  ),
+  Sentry: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M13.908.001a1.758 1.758 0 0 0-1.52.88L.37 21.517a1.75 1.75 0 0 0 1.52 2.622h4.005c.064-1.04.264-2.06.594-3H3.63L12 5.602 17.429 15H14.44a18.97 18.97 0 0 1 .517 3h3.544a1.75 1.75 0 0 0 1.437-2.748l-4.51-7.77C13.99 6.16 17.3 8.397 18.57 12.004a7.977 7.977 0 0 1 2.87 1.024C20.67 7.023 16.698 2.73 11.808.75A1.754 1.754 0 0 0 13.908 0z" />
+    </svg>
+  ),
+  PostHog: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M13.37 0v6.476l5.605 3.236V3.236L13.37 0zM5.025 4.71v6.477l5.605 3.236V7.947L5.025 4.71zM13.37 9.421v6.477l5.605 3.237V12.66l-5.605-3.237zM5.025 14.131v6.477L10.63 24v-6.476l-5.605-3.237v-.156z" />
+    </svg>
+  ),
+  Cloudflare: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M16.87 15.744l.244-.838c.294-.998.165-1.918-.356-2.595-.472-.615-1.223-.975-2.1-1.013l-7.662-.105a.302.302 0 0 1-.275-.181.31.31 0 0 1 .044-.327c.101-.122.255-.194.417-.194l7.73-.105c.919-.044 1.915-.783 2.264-1.692l.442-1.151a.303.303 0 0 0-.011-.235 5.808 5.808 0 0 0-11.15.891 3.337 3.337 0 0 0-4.64 3.024 3.277 3.277 0 0 0 .072.687A4.68 4.68 0 0 0 4.68 20.998l11.773-.015a2.897 2.897 0 0 0 2.742-1.942l.275-.834a2.89 2.89 0 0 0-.07-2.046 2.9 2.9 0 0 0-2.529-1.417z" />
+    </svg>
+  ),
+  Perplexity: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M22.638 8.334l-5.707-5.707-4.93 4.929-4.93-4.929-5.71 5.707 4.93 4.93-4.93 4.929 5.71 5.707 4.93-4.929 4.93 4.929 5.707-5.707-4.929-4.929 4.929-4.93zm-10.637 8.07L9.172 13.57l-2.829 2.828-2.828-2.828 2.828-2.828 2.829 2.828 2.829-2.828 2.829 2.828-2.829 2.834zm0-8.808L9.172 10.43 6.343 7.6l2.829-2.829 2.829 2.829 2.829-2.829 2.829 2.829-2.829 2.829-2.829-2.834z" />
+    </svg>
+  ),
+  'Google Calendar': (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M18.316 5.684H24v12.632h-5.684zm-12.632 0h5.684v5.684H5.684zm6.316 0h5.684v5.684h-5.684zM5.684 12h5.684v5.684H5.684zM12 12h5.684v5.684H12zM0 5.684h5.684v12.632H0zM5.684 0h12.632v5.684H5.684zM0 0h5.684v5.684H0zm18.316 0H24v5.684h-5.684zM0 18.316h5.684V24H0zm5.684 0h12.632V24H5.684zM18.316 18.316H24V24h-5.684z" />
+    </svg>
+  ),
+  'Google Sheets': (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M14.727 0H3.272A1.09 1.09 0 0 0 2.18 1.09v21.818A1.09 1.09 0 0 0 3.273 24h17.455a1.09 1.09 0 0 0 1.09-1.09V7.09zm-.363 1.527 5.109 5.11H14.364zM8.727 19.636H6.545v-1.09h2.182zm0-3.272H6.545v-1.091h2.182zm0-3.273H6.545v-1.09h2.182zm4.364 6.545h-2.182v-1.09h2.182zm0-3.272h-2.182v-1.091h2.182zm0-3.273h-2.182v-1.09h2.182zm4.363 6.545h-2.181v-1.09h2.181zm0-3.272h-2.181v-1.091h2.181zm0-3.273h-2.181v-1.09h2.181z" />
+    </svg>
+  ),
+  DocuSign: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M11.99 0C5.36 0 0 5.37 0 12c0 6.62 5.36 12 11.99 12C18.63 24 24 18.62 24 12c0-6.63-5.37-12-12.01-12zm5.9 17.15H6.08V6.85h2.78v7.65H17.9v2.65z" />
+    </svg>
+  ),
+}
+
+// ─── Tool Data ────────────────────────────────────────────────────────────────
+
+interface Tool { name: string; abbr?: string; svgKey?: string }
+
+const row1: Tool[] = [
+  { name: 'Gmail',            svgKey: 'Gmail' },
+  { name: 'Slack',            svgKey: 'Slack' },
+  { name: 'Notion',           svgKey: 'Notion' },
+  { name: 'HubSpot',          svgKey: 'HubSpot' },
+  { name: 'Cloudflare',       svgKey: 'Cloudflare' },
+  { name: 'Sentry',           svgKey: 'Sentry' },
+  { name: 'Intercom',         svgKey: 'Intercom' },
+  { name: 'GitHub',           svgKey: 'GitHub' },
+  { name: 'Zoom',             svgKey: 'Zoom' },
+  { name: 'Linear',           svgKey: 'Linear' },
+  { name: 'PostHog',          svgKey: 'PostHog' },
+  { name: 'Figma',            svgKey: 'Figma' },
+]
+
+const row2: Tool[] = [
+  { name: 'Jira',             svgKey: 'Jira' },
+  { name: 'Vercel',           svgKey: 'Vercel' },
+  { name: 'Reddit',           svgKey: 'Reddit' },
+  { name: 'Google Sheets',    svgKey: 'Google Sheets' },
+  { name: 'Google Calendar',  svgKey: 'Google Calendar' },
+  { name: 'X / Twitter',      svgKey: 'X' },
+  { name: 'Perplexity',       svgKey: 'Perplexity' },
+  { name: 'Asana',            svgKey: 'Asana' },
+  { name: 'Stripe',           svgKey: 'Stripe' },
+  { name: 'Airtable',         svgKey: 'Airtable' },
+  { name: 'Dropbox',          svgKey: 'Dropbox' },
+  { name: 'Figma',            svgKey: 'Figma' },
+]
+
+const row3: Tool[] = [
+  { name: 'Google Drive',     svgKey: 'Google Drive' },
+  { name: 'DocuSign',         svgKey: 'DocuSign' },
+  { name: 'Cal.com',          abbr: 'CAL' },
+  { name: 'Python',           abbr: 'PY' },
+  { name: 'n8n',              abbr: 'n8n' },
+  { name: 'Make',             abbr: 'MK' },
+  { name: 'Zapier',           abbr: 'ZAP' },
+  { name: 'Supabase',         abbr: 'SB' },
+  { name: 'PostgreSQL',       abbr: 'PG' },
+  { name: 'Claude',           abbr: 'AI' },
+  { name: 'Resend',           abbr: 'RS' },
+  { name: 'Twilio',           abbr: 'TW' },
+]
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function TextIcon({ abbr }: { abbr: string }) {
+  return (
+    <span className="text-sm font-mono font-bold tracking-tight text-norcal-clay">
+      {abbr}
+    </span>
+  )
+}
+
+function ToolCell({ tool }: { tool: Tool }) {
+  return (
+    <div className="flex flex-col items-center justify-center w-[120px] shrink-0 py-8 px-4 gap-3 border-r border-norcal-stone/30 group cursor-default hover:bg-norcal-stone/25 transition-colors duration-200">
+      <span className="opacity-40 group-hover:opacity-90 transition-opacity duration-200 text-norcal-sand">
+        {tool.svgKey && icons[tool.svgKey]
+          ? icons[tool.svgKey]
+          : <TextIcon abbr={tool.abbr ?? tool.name.slice(0, 3).toUpperCase()} />}
+      </span>
+      <span className="text-[9px] font-mono tracking-wider text-norcal-sage opacity-40 group-hover:opacity-70 transition-opacity duration-200 text-center leading-tight whitespace-nowrap">
+        {tool.name}
+      </span>
+    </div>
+  )
+}
+
+function MarqueeRow({ tools, direction }: { tools: Tool[]; direction: 'left' | 'right' }) {
+  const animClass = direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'
+  return (
+    <div className="overflow-hidden border-b border-norcal-stone/30 last:border-b-0">
+      <div className={`flex w-max ${animClass}`}>
+        {/* First set */}
+        {tools.map((t, i) => <ToolCell key={`a-${i}`} tool={t} />)}
+        {/* Duplicate for seamless loop */}
+        {tools.map((t, i) => <ToolCell key={`b-${i}`} tool={t} />)}
+      </div>
+    </div>
+  )
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+
+export default function ToolsIntegration() {
+  return (
+    <>
+      <style>{`
+        @keyframes marquee-left {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-marquee-left  { animation: marquee-left  35s linear infinite; }
+        .animate-marquee-right { animation: marquee-right 35s linear infinite; }
+      `}</style>
+
+      <section className="py-24 px-4 md:px-8 border-b border-norcal-stone/30">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-[12px] font-mono font-bold tracking-[0.4em] uppercase mb-4 opacity-40 text-norcal-sage">
+              Integrations
+            </h2>
+            <p className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[0.9] italic text-norcal-sand">
+              Works with your tools.
+            </p>
+            <p className="mt-5 text-sm font-mono text-norcal-sage opacity-60 max-w-lg leading-relaxed">
+              Connects to the platforms you already use.
+              <br />Data flows in, automations flow out.
+            </p>
+          </motion.div>
+
+          {/* Marquee Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="border border-norcal-stone/30 rounded-xl overflow-hidden"
+          >
+            <MarqueeRow tools={row1} direction="right" />
+            <MarqueeRow tools={row2} direction="left" />
+            <MarqueeRow tools={row3} direction="right" />
+          </motion.div>
+
+        </div>
+      </section>
+    </>
+  )
+}
