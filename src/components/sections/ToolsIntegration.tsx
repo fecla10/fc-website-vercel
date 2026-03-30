@@ -125,9 +125,45 @@ const icons: Record<string, JSX.Element> = {
       <path d="M14.727 0H3.272A1.09 1.09 0 0 0 2.18 1.09v21.818A1.09 1.09 0 0 0 3.273 24h17.455a1.09 1.09 0 0 0 1.09-1.09V7.09zm-.363 1.527 5.109 5.11H14.364zM8.727 19.636H6.545v-1.09h2.182zm0-3.272H6.545v-1.091h2.182zm0-3.273H6.545v-1.09h2.182zm4.364 6.545h-2.182v-1.09h2.182zm0-3.272h-2.182v-1.091h2.182zm0-3.273h-2.182v-1.09h2.182zm4.363 6.545h-2.181v-1.09h2.181zm0-3.272h-2.181v-1.091h2.181zm0-3.273h-2.181v-1.09h2.181z" />
     </svg>
   ),
-  DocuSign: (
+  Python: (
     <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
-      <path d="M11.99 0C5.36 0 0 5.37 0 12c0 6.62 5.36 12 11.99 12C18.63 24 24 18.62 24 12c0-6.63-5.37-12-12.01-12zm5.9 17.15H6.08V6.85h2.78v7.65H17.9v2.65z" />
+      <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.96 3.403 5.96h2.03v-2.867s-.109-3.402 3.35-3.402h5.766s3.24.052 3.24-3.13V3.13S18.28 0 11.914 0zm-3.2 1.812a1.042 1.042 0 1 1 0 2.085 1.042 1.042 0 0 1 0-2.085z" />
+      <path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.96-3.403-5.96h-2.03v2.867s.109 3.402-3.35 3.402H9.451s-3.24-.052-3.24 3.13v5.4S5.72 24 12.086 24zm3.2-1.812a1.042 1.042 0 1 1 0-2.085 1.042 1.042 0 0 1 0 2.085z" />
+    </svg>
+  ),
+  Supabase: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 .836 1.659H12v8.959a.396.396 0 0 0 .716.233l9.081-12.261.401-.562a1.04 1.04 0 0 0-.836-1.66z" />
+    </svg>
+  ),
+  Zapier: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M24 8.77h-8.16l7.42-7.37L21.18 0l-8.53 8.49V.12H9.35v8.37L.82 0 0 1.4l7.42 7.37H0v3.46h8.16l-7.42 7.37.78 1.06 8.57-8.53v8.41h3.3v-8.41l8.53 8.53 1.06-1.06-7.42-7.37H24z" />
+    </svg>
+  ),
+  OpenAI: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.843-3.372L15.115 7.2a.076.076 0 0 1 .071 0l4.83 2.786a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.403-.662zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" />
+    </svg>
+  ),
+  Twilio: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.6C6.696 21.6 2.4 17.304 2.4 12S6.696 2.4 12 2.4 21.6 6.696 21.6 12 17.304 21.6 12 21.6zm-3.6-11.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm7.2 0a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm-7.2 7.2a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm7.2 0a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z" />
+    </svg>
+  ),
+  'Cal.com': (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zM7 11h5v5H7z" />
+    </svg>
+  ),
+  Anthropic: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M17.203 3.96h-2.398L8.797 20.04h2.187l1.652-4.406h5.928l1.652 4.406h2.187L17.203 3.96zm-3.985 9.876 2.286-6.09 2.286 6.09h-4.572zM6.797 3.96H4.41L0 20.04h2.187l1.023-2.734h4.805l1.023 2.734h2.187L6.797 3.96zM3.9 15.508l1.71-4.564 1.71 4.564H3.9z" />
+    </svg>
+  ),
+  Resend: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+      <path d="M0 0h11.314l6.96 6.96-3.394 3.394 4.12 4.12v9.526h-6V14.88L9.88 11.76H6v12.24H0V0zm6 6v3h4.686L8.04 6.354 6 6z" />
     </svg>
   ),
 }
@@ -137,55 +173,55 @@ const icons: Record<string, JSX.Element> = {
 interface Tool { name: string; abbr?: string; svgKey?: string }
 
 const row1: Tool[] = [
-  { name: 'Gmail',            svgKey: 'Gmail' },
-  { name: 'Slack',            svgKey: 'Slack' },
-  { name: 'Notion',           svgKey: 'Notion' },
-  { name: 'HubSpot',          svgKey: 'HubSpot' },
-  { name: 'Cloudflare',       svgKey: 'Cloudflare' },
-  { name: 'Sentry',           svgKey: 'Sentry' },
-  { name: 'Intercom',         svgKey: 'Intercom' },
-  { name: 'GitHub',           svgKey: 'GitHub' },
-  { name: 'Zoom',             svgKey: 'Zoom' },
-  { name: 'Linear',           svgKey: 'Linear' },
-  { name: 'PostHog',          svgKey: 'PostHog' },
-  { name: 'Figma',            svgKey: 'Figma' },
+  { name: 'Gmail',           svgKey: 'Gmail' },
+  { name: 'Slack',           svgKey: 'Slack' },
+  { name: 'Notion',          svgKey: 'Notion' },
+  { name: 'HubSpot',         svgKey: 'HubSpot' },
+  { name: 'Cloudflare',      svgKey: 'Cloudflare' },
+  { name: 'Sentry',          svgKey: 'Sentry' },
+  { name: 'Intercom',        svgKey: 'Intercom' },
+  { name: 'GitHub',          svgKey: 'GitHub' },
+  { name: 'Zoom',            svgKey: 'Zoom' },
+  { name: 'Linear',          svgKey: 'Linear' },
+  { name: 'PostHog',         svgKey: 'PostHog' },
+  { name: 'Figma',           svgKey: 'Figma' },
 ]
 
 const row2: Tool[] = [
-  { name: 'Jira',             svgKey: 'Jira' },
-  { name: 'Vercel',           svgKey: 'Vercel' },
-  { name: 'Reddit',           svgKey: 'Reddit' },
-  { name: 'Google Sheets',    svgKey: 'Google Sheets' },
-  { name: 'Google Calendar',  svgKey: 'Google Calendar' },
-  { name: 'X / Twitter',      svgKey: 'X' },
-  { name: 'Perplexity',       svgKey: 'Perplexity' },
-  { name: 'Asana',            svgKey: 'Asana' },
-  { name: 'Stripe',           svgKey: 'Stripe' },
-  { name: 'Airtable',         svgKey: 'Airtable' },
-  { name: 'Dropbox',          svgKey: 'Dropbox' },
-  { name: 'Figma',            svgKey: 'Figma' },
+  { name: 'Jira',            svgKey: 'Jira' },
+  { name: 'Vercel',          svgKey: 'Vercel' },
+  { name: 'Reddit',          svgKey: 'Reddit' },
+  { name: 'Google Sheets',   svgKey: 'Google Sheets' },
+  { name: 'Google Calendar', svgKey: 'Google Calendar' },
+  { name: 'X / Twitter',     svgKey: 'X' },
+  { name: 'Perplexity',      svgKey: 'Perplexity' },
+  { name: 'Asana',           svgKey: 'Asana' },
+  { name: 'Stripe',          svgKey: 'Stripe' },
+  { name: 'Airtable',        svgKey: 'Airtable' },
+  { name: 'Dropbox',         svgKey: 'Dropbox' },
+  { name: 'Google Drive',    svgKey: 'Google Drive' },
 ]
 
 const row3: Tool[] = [
-  { name: 'Google Drive',     svgKey: 'Google Drive' },
-  { name: 'DocuSign',         svgKey: 'DocuSign' },
-  { name: 'Cal.com',          abbr: 'CAL' },
-  { name: 'Python',           abbr: 'PY' },
-  { name: 'n8n',              abbr: 'n8n' },
-  { name: 'Make',             abbr: 'MK' },
-  { name: 'Zapier',           abbr: 'ZAP' },
-  { name: 'Supabase',         abbr: 'SB' },
-  { name: 'PostgreSQL',       abbr: 'PG' },
-  { name: 'Claude',           abbr: 'AI' },
-  { name: 'Resend',           abbr: 'RS' },
-  { name: 'Twilio',           abbr: 'TW' },
+  { name: 'Python',          svgKey: 'Python' },
+  { name: 'Supabase',        svgKey: 'Supabase' },
+  { name: 'Zapier',          svgKey: 'Zapier' },
+  { name: 'OpenAI',          svgKey: 'OpenAI' },
+  { name: 'Anthropic',       svgKey: 'Anthropic' },
+  { name: 'Twilio',          svgKey: 'Twilio' },
+  { name: 'Cal.com',         svgKey: 'Cal.com' },
+  { name: 'Resend',          svgKey: 'Resend' },
+  { name: 'n8n',             abbr: 'n8n' },
+  { name: 'Make',            abbr: 'MK' },
+  { name: 'PostgreSQL',      abbr: 'PG' },
+  { name: 'dbt',             abbr: 'dbt' },
 ]
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function TextIcon({ abbr }: { abbr: string }) {
   return (
-    <span className="text-sm font-mono font-bold tracking-tight text-norcal-clay">
+    <span className="text-sm font-mono font-bold tracking-tight">
       {abbr}
     </span>
   )
@@ -193,13 +229,24 @@ function TextIcon({ abbr }: { abbr: string }) {
 
 function ToolCell({ tool }: { tool: Tool }) {
   return (
-    <div className="flex flex-col items-center justify-center w-[120px] shrink-0 py-8 px-4 gap-3 border-r border-norcal-stone/30 group cursor-default hover:bg-norcal-stone/25 transition-colors duration-200">
-      <span className="opacity-40 group-hover:opacity-90 transition-opacity duration-200 text-norcal-sand">
+    <div className="flex flex-col items-center justify-center w-[120px] shrink-0 py-8 px-4 gap-3 border-r border-norcal-stone/30 group cursor-default hover:bg-norcal-stone/20 transition-all duration-300">
+      {/* Icon */}
+      <span
+        className="text-norcal-sand/50 group-hover:text-norcal-clay transition-colors duration-300"
+        style={{ filter: 'drop-shadow(0 0 0px transparent)', transition: 'color 0.3s, filter 0.3s' }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLElement).style.filter = 'drop-shadow(0 0 6px #c47f62)'
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLElement).style.filter = 'drop-shadow(0 0 0px transparent)'
+        }}
+      >
         {tool.svgKey && icons[tool.svgKey]
           ? icons[tool.svgKey]
           : <TextIcon abbr={tool.abbr ?? tool.name.slice(0, 3).toUpperCase()} />}
       </span>
-      <span className="text-[9px] font-mono tracking-wider text-norcal-sage opacity-40 group-hover:opacity-70 transition-opacity duration-200 text-center leading-tight whitespace-nowrap">
+      {/* Label */}
+      <span className="text-[9px] font-mono tracking-wider text-norcal-sage/50 group-hover:text-norcal-clay/70 transition-colors duration-300 text-center leading-tight whitespace-nowrap">
         {tool.name}
       </span>
     </div>
@@ -211,9 +258,7 @@ function MarqueeRow({ tools, direction }: { tools: Tool[]; direction: 'left' | '
   return (
     <div className="overflow-hidden border-b border-norcal-stone/30 last:border-b-0">
       <div className={`flex w-max ${animClass}`}>
-        {/* First set */}
         {tools.map((t, i) => <ToolCell key={`a-${i}`} tool={t} />)}
-        {/* Duplicate for seamless loop */}
         {tools.map((t, i) => <ToolCell key={`b-${i}`} tool={t} />)}
       </div>
     </div>
@@ -238,28 +283,22 @@ export default function ToolsIntegration() {
         .animate-marquee-right { animation: marquee-right 35s linear infinite; }
       `}</style>
 
-      <section className="py-24 px-4 md:px-8 border-b border-norcal-stone/30">
+      <section className="py-24 px-4 md:px-8 border-b border-norcal-stone/30 relative z-10">
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="text-[12px] font-mono font-bold tracking-[0.4em] uppercase mb-4 opacity-40 text-norcal-sage">
+          <div className="mb-12">
+            <h2 className="text-xs font-mono font-bold tracking-[0.2em] uppercase mb-4" style={{ color: '#c47f62' }}>
               Integrations
             </h2>
             <p className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[0.9] italic text-norcal-sand">
               Works with your tools.
             </p>
-            <p className="mt-5 text-sm font-mono text-norcal-sage opacity-60 max-w-lg leading-relaxed">
+            <p className="mt-5 text-base md:text-lg font-mono text-norcal-sage opacity-60 max-w-lg leading-relaxed">
               Connects to the platforms you already use.
               <br />Data flows in, automations flow out.
             </p>
-          </motion.div>
+          </div>
 
           {/* Marquee Grid */}
           <motion.div

@@ -9,6 +9,7 @@ import AsciiWave from '@/components/AsciiWave'
 import MatrixText from '@/components/MatrixText'
 import dynamic from 'next/dynamic'
 import OperationsArchitecture from '@/components/sections/OperationsArchitecture'
+import ToolsIntegration from '@/components/sections/ToolsIntegration'
 
 const Interactive3DGlobe = dynamic(() => import('@/components/Interactive3DGlobe'), { 
   ssr: false,
@@ -251,6 +252,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Tools Integration - Between Expertise and Operations Architecture */}
+      <ToolsIntegration />
 
       {/* Operations Architecture - Right after Expertise section */}
       <OperationsArchitecture />
