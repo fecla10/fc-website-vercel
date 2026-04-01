@@ -128,7 +128,7 @@ export default function EngagementProcessContent() {
                         <span className="text-[9px] sm:text-[10px] font-mono opacity-30 mt-1 text-norcal-sage group-hover/item:text-white group-hover/item:opacity-100 group-hover/item:glow-white transition-all duration-300 shrink-0">
                           [{itemIndex + 1}]
                         </span>
-                        <p className="text-xs sm:text-sm font-mono leading-normal opacity-70 group-hover:opacity-100 group-hover/item:text-white group-hover/item:opacity-100 group-hover/item:font-semibold group-hover/item:glow-white transition-all duration-300 text-norcal-sage break-words">
+                        <p className="text-sm font-mono leading-normal opacity-70 group-hover:opacity-100 group-hover/item:text-white group-hover/item:opacity-100 group-hover/item:font-semibold group-hover/item:glow-white transition-all duration-300 text-norcal-sage break-words">
                           {item}
                         </p>
                       </li>

@@ -294,7 +294,7 @@ export default function ToolsIntegration() {
             <p className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[0.9] italic text-norcal-sand">
               Works with your tools.
             </p>
-            <p className="mt-5 text-base md:text-lg font-mono text-norcal-sage opacity-60 max-w-lg leading-relaxed">
+            <p className="mt-5 text-sm font-mono text-norcal-sage opacity-60 max-w-lg leading-relaxed">
               Connects to the platforms you already use.
               <br />Data flows in, automations flow out.
             </p>

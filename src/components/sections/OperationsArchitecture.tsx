@@ -268,7 +268,7 @@ export default function OperationsArchitecture() {
               <h4 className="font-serif text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4 italic tracking-tight text-norcal-sand group-hover:text-norcal-clay transition-colors duration-300">
                 {cap.subtitle}
               </h4>
-              <p className="text-xs sm:text-sm font-mono leading-relaxed opacity-60 text-norcal-sage group-hover:text-norcal-sand group-hover:opacity-100 transition-colors duration-300">
+              <p className="text-sm font-mono leading-relaxed opacity-60 text-norcal-sage group-hover:text-norcal-sand group-hover:opacity-100 transition-colors duration-300">
                 {cap.desc}
               </p>
             </motion.div>
